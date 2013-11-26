@@ -59,10 +59,10 @@ class EntryQuerySet(models.query.QuerySet):
     """QuerySet extension to provide filtering by billable status"""
 
     def date_trunc(self, key='month', extra_values=None):
-        select = {"day": {"date": """DATE_TRUNC('day', end_time)"""},
-                  "week": {"date": """DATE_TRUNC('week', end_time)"""},
-                  "month": {"date": """DATE_TRUNC('month', end_time)"""},
-                  "year": {"date": """DATE_TRUNC('year', end_time)"""},
+        select = {"day": {"date": utils.get_date_trunc_sql('day', 'end_time')},
+                  "week": {"date": utils.get_date_trunc_sql('week', 'end_time')},
+                  "month": {"date": utils.get_date_trunc_sql('month', 'end_time')},
+                  "year": {"date": utils.get_date_trunc_sql('year', 'end_time')},
         }
         basic_values = (
             'user', 'date', 'user__first_name', 'user__last_name', 'billable',

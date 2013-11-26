@@ -2,6 +2,7 @@ import datetime
 from dateutil.relativedelta import relativedelta
 
 from django.conf import settings
+from django.db import connection
 from django.db.models import get_model
 from django.utils import timezone
 
@@ -98,3 +99,38 @@ def get_year_start(day=None):
 def to_datetime(date):
     """Transforms a date or datetime object into a date object."""
     return datetime.datetime(date.year, date.month, date.day)
+
+def _get_mysql_date_trunc_sql(lookup_type, field_name):
+    # lookup_type is 'year', 'month', 'week', 'day'
+    date = field_name
+    trunc_to = lookup_type
+    if lookup_type == 'week':
+        # little SQL calculation to get the Monday in the week
+        date = 'DATE_ADD(%s, INTERVAL(1-DAYOFWEEK(%s)) +1 DAY)' % \
+                     (field_name, field_name)
+        trunc_to = 'day'
+    fields = ['year', 'month', 'day', 'hour', 'minute', 'second']
+    format = ('%%Y-', '%%m', '-%%d', '%%H:', '%%i', '%%s')
+    format_def = ('0000-', '01', '-01', ' 00:', '00', ':00')
+    try:
+        i = fields.index(trunc_to) +1
+    except ValueError:
+        sql = date
+    else:
+        format_str = ''.join([f for f in format[:i]] + [f for f in format_def[i:]])
+        sql = "CAST(DATE_FORMAT(%s, '%s') AS DATETIME)" % (date, format_str)
+    return sql
+
+def _get_postgres_date_trunc_sql(lookup_type, field_name):
+    return """DATE_TRUNC('%s', %s)""" % (lookup_type, field_name)
+
+def get_date_trunc_sql(lookup_type, field_name):
+    date_trunc_functions = {
+        'postgresql': _get_postgres_date_trunc_sql,
+        'mysql': _get_mysql_date_trunc_sql
+    }
+    try:
+        sql = date_trunc_functions[connection.vendor](lookup_type, field_name)
+    except KeyError as e:
+        raise Exception('get_date_trunc_sql() not implemented for db vendor: %s' % e)
+    return sql

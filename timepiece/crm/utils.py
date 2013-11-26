@@ -3,6 +3,7 @@ from itertools import groupby
 from django.db.models import Sum
 
 from timepiece.utils import add_timezone, get_hours_summary, get_week_start
+from timepiece.utils import get_date_trunc_sql
 
 
 def daily_summary(day_entries):
@@ -18,11 +19,10 @@ def daily_summary(day_entries):
                 all_day[key] = hours[key]
     return (all_day, projects)
 
-
 def grouped_totals(entries):
     select = {
-        "day": {"date": """DATE_TRUNC('day', end_time)"""},
-        "week": {"date": """DATE_TRUNC('week', end_time)"""},
+        "day": {"date": get_date_trunc_sql('day', 'end_time')},
+        "week": {"date": get_date_trunc_sql('week', 'end_time')},
     }
     weekly = entries.extra(select=select["week"]).values('date', 'billable')
     weekly = weekly.annotate(hours=Sum('hours')).order_by('date')
