@@ -6,7 +6,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.db import transaction
 from django.db.models import Sum
 from django.http import HttpResponseRedirect, HttpResponseForbidden, Http404
 from django.shortcuts import get_object_or_404, render, redirect
@@ -20,6 +19,7 @@ from timepiece.templatetags.timepiece_tags import seconds_to_hours
 from timepiece.utils.csv import CSVViewMixin
 from timepiece.utils.search import SearchListView
 from timepiece.utils.views import cbv_decorator
+from timepiece.utils.compat import atomic
 
 from timepiece.crm.forms import (CreateEditBusinessForm, CreateEditProjectForm,
         EditUserSettingsForm, EditProjectRelationshipForm, SelectProjectForm,
@@ -491,7 +491,7 @@ class EditProject(UpdateView):
 
 @cbv_decorator(permission_required('crm.add_projectrelationship'))
 @cbv_decorator(csrf_exempt)
-@cbv_decorator(transaction.commit_on_success)
+@cbv_decorator(atomic)
 class CreateRelationship(View):
 
     def post(self, request, *args, **kwargs):
@@ -531,7 +531,7 @@ class RelationshipObjectMixin(object):
 
 
 @cbv_decorator(permission_required('crm.change_projectrelationship'))
-@cbv_decorator(transaction.commit_on_success)
+@cbv_decorator(atomic)
 class EditRelationship(RelationshipObjectMixin, UpdateView):
     model = ProjectRelationship
     template_name = 'timepiece/relationship/edit.html'
@@ -540,7 +540,7 @@ class EditRelationship(RelationshipObjectMixin, UpdateView):
 
 @cbv_decorator(permission_required('crm.delete_projectrelationship'))
 @cbv_decorator(csrf_exempt)
-@cbv_decorator(transaction.commit_on_success)
+@cbv_decorator(atomic)
 class DeleteRelationship(RelationshipObjectMixin, DeleteView):
     model = ProjectRelationship
     template_name = 'timepiece/relationship/delete.html'

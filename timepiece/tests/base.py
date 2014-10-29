@@ -113,7 +113,7 @@ class ViewTestMixin(object):
         return self.assertRedirectsNoFollow(response, login_url, use_params,
                 status_code)
 
-    def login_user(self, user, strict=True):
+    def login_user(self, user, strict=True, stop=None):
         """Log in a user without need for a password.
 
         Adapted from

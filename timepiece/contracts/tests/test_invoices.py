@@ -402,6 +402,7 @@ class InvoiceCreateTestCase(ViewTestMixin, TestCase):
                 to_date=to_date.strftime(DATE_FORM_FORMAT))
 
         response = self.client.get(url)
+        from IPython import embed; embed()
         self.assertEquals(response.status_code, 403)
 
     def test_invoice_confirm_view_permission(self):

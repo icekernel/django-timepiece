@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from django.core.urlresolvers import reverse
-from django.db import transaction, DatabaseError
+from django.db import DatabaseError
 from django.db.models import Sum, Q
 from django.http import HttpResponseRedirect, Http404, HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
@@ -19,6 +19,8 @@ from timepiece.utils.views import cbv_decorator
 from timepiece.contracts.forms import InvoiceForm, OutstandingHoursFilterForm
 from timepiece.contracts.models import ProjectContract, HourGroup, EntryGroup
 from timepiece.entries.models import Project, Entry
+
+from timepiece.utils.compat import atomic
 
 
 @cbv_decorator(permission_required('contracts.add_projectcontract'))
@@ -57,7 +59,7 @@ class ContractList(ListView):
 
 
 @login_required
-@transaction.commit_on_success
+@atomic
 def create_invoice(request):
     pk = request.GET.get('project', None)
     to_date = request.GET.get('to_date', None)

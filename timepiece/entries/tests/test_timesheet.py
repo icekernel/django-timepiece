@@ -1514,7 +1514,7 @@ class StatusTest(ViewTestMixin, TestCase):
 
     def test_no_hours_approve(self):
         self.login_with_permissions('approve_timesheet', 'view_entry_summary')
-        response = self.client.get(self.approve_url(), follow=True)
+        response = self.client.get(self.approve_url(), kwargs={'follow': True})
         self.assertEquals(response.status_code, 200)
 
         msg = 'You cannot verify/approve a timesheet with no hours'
@@ -1598,7 +1598,7 @@ class StatusTest(ViewTestMixin, TestCase):
             'status': Entry.UNVERIFIED
         })
 
-        response = self.client.get(self.verify_url(), follow=True)
+        response = self.client.get(self.verify_url(), kwargs={'follow': True})
         self.assertEquals(response.status_code, 200)
 
         messages = response.context['messages']

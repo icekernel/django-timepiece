@@ -3,6 +3,8 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models import get_model
 
+from django import VERSION as DJANGO_VERSION
+
 from timepiece.utils import get_active_entry
 
 
@@ -36,17 +38,29 @@ class UserProfile(models.Model):
 class TypeAttributeManager(models.Manager):
     """Object manager for type attributes."""
 
-    def get_query_set(self):
-        qs = super(TypeAttributeManager, self).get_query_set()
+    def get_queryset(self):
+        if DJANGO_VERSION[0] < 2 and DJANGO_VERSION[1] <= 5:
+            qs = super(TypeAttributeManager, self).get_query_set()
+        else:
+            qs = super(TypeAttributeManager, self).get_queryset()
         return qs.filter(type=Attribute.PROJECT_TYPE)
+
+    def get_query_set(self):
+        return self.get_queryset()
 
 
 class StatusAttributeManager(models.Manager):
     """Object manager for status attributes."""
 
-    def get_query_set(self):
-        qs = super(StatusAttributeManager, self).get_query_set()
+    def get_queryset(self):
+        if DJANGO_VERSION[0] < 2 and DJANGO_VERSION[1] <= 5:
+            qs = super(StatusAttributeManager, self).get_query_set()
+        else:
+            qs = super(StatusAttributeManager, self).get_queryset()
         return qs.filter(type=Attribute.PROJECT_STATUS)
+
+    def get_query_set(self):
+        return self.get_queryset()
 
 
 class Attribute(models.Model):
@@ -108,11 +122,17 @@ class Business(models.Model):
 
 class TrackableProjectManager(models.Manager):
 
-    def get_query_set(self):
-        return super(TrackableProjectManager, self).get_query_set().filter(
+    def get_queryset(self):
+        if DJANGO_VERSION[0] < 2 and DJANGO_VERSION[1] <= 5:
+            qs = super(TrackableProjectManager, self).get_query_set()
+        else:
+            qs = super(TrackableProjectManager, self).get_queryset()
+        return qs.filter(
             status__enable_timetracking=True,
             type__enable_timetracking=True,
         )
+    def get_query_set(self):
+        return self.get_queryset()
 
 
 class Project(models.Model):

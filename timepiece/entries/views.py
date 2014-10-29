@@ -12,7 +12,6 @@ from django.contrib.auth.models import User, Permission
 from django.contrib.contenttypes.models import ContentType
 from django.core import exceptions
 from django.core.urlresolvers import reverse
-from django.db import transaction
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import redirect, render
@@ -28,7 +27,7 @@ from timepiece.crm.models import Project, UserProfile
 from timepiece.entries.forms import ClockInForm, ClockOutForm, \
         AddUpdateEntryForm, ProjectHoursForm, ProjectHoursSearchForm
 from timepiece.entries.models import Entry, ProjectHours
-from timepiece.utils.http import JsonResponse
+from timepiece.utils.compat import JsonResponse, atomic
 
 class Dashboard(TemplateView):
     template_name = 'timepiece/dashboard.html'
@@ -133,7 +132,7 @@ class Dashboard(TemplateView):
 
 
 @permission_required('entries.can_clock_in')
-@transaction.commit_on_success
+@atomic
 def clock_in(request):
     """For clocking the user into a project."""
     user = request.user
