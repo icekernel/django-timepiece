@@ -1,19 +1,20 @@
 {% extends 'timepiece/invoice/base.html' %}
 {% load timepiece_tags bootstrap_toolkit %}
 {% load url from future %}
+{% load i18n %}
 
-{% block title %}Invoices{% endblock title %}
+{% block title %}{% trans "Invoices" %}{% endblock title %}
 
 {% block content %}
     <div class="row-fluid">
         <div class="span12">
-            <h2>All Invoices</h2>
+            <h2>{% trans "All Invoices" %}</h2>
             <ul class="nav nav-pills">
                 <li>
-                    <a href="{% url 'list_outstanding_invoices' %}">Outstanding Hours</a>
+                    <a href="{% url 'list_outstanding_invoices' %}">{% trans "Outstanding Hours" %}</a>
                 </li>
                 <li>
-                    <span>Previous Invoices</span>
+                    <span>{% trans "Previous Invoices" %}</span>
                 </li>
             </ul>
         </div>
@@ -23,7 +24,7 @@
         <div class="span12">
             <form class="form-inline" accept-charset="UTF-8" method="get" action="">
                 {{ form|as_bootstrap:"inline" }}
-                <button type="submit" class="btn">Search</button>
+                <button type="submit" class="btn">{% trans "Search" %}</button>
             </form>
         </div>
     </div>
@@ -38,15 +39,15 @@
                 <table class="table table-bordered table-striped table-condensed">
                     <thead>
                         <tr>
-                            <th>Invoice</th>
-                            <th>Reference</th>
-                            <th>Project</th>
-                            <th>Status</th>
-                            <th>Invoiced by</th>
-                            <th>Created on</th>
-                            <th>Starting on</th>
-                            <th>Ending on</th>
-                            <th>Comments</th>
+                            <th>{% trans "Invoice" %}</th>
+                            <th>{% trans "Reference" %}</th>
+                            <th>{% trans "Project" %}</th>
+                            <th>{% trans "Status" %}</th>
+                            <th>{% trans "Invoiced by" %}</th>
+                            <th>{% trans "Created on" %}</th>
+                            <th>{% trans "Starting on" %}</th>
+                            <th>{% trans "Ending on" %}</th>
+                            <th>{% trans "Comments" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,7 +68,7 @@
                 </table>
                 {% paginate %}
             {% else %}
-                <p>There are no invoices.</p>
+                <p>{% trans "There are no invoices." %}</p>
             {% endif %}
         </div>
     </div>

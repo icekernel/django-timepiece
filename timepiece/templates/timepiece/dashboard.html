@@ -1,8 +1,9 @@
 {% extends "timepiece/base.html" %}
 {% load url from future %}
 {% load timepiece_tags %}
+{% load i18n %}
 
-{% block title %}Dashboard{% endblock title %}
+{% block title %}{% trans "Dashboard" %}{% endblock title %}
 
 {% block bodyid %}dashboard{% endblock bodyid %}
 
@@ -26,7 +27,7 @@
 
 {% block content %}
     {% if perms.entries.can_clock_in %}
-        <h2>{{ week_start|date:'M j' }} to {{ week_end|date:'M j' }}</h2>
+        <h2>{{ week_start|date:'M j' }} {% trans "to" %} {{ week_end|date:'M j' }}</h2>
 
         <div class="row-fluid">
             <div class="span12" id="active-entry">
@@ -34,19 +35,19 @@
                 <div id="active-buttons">
                     <div class="pull-left">
                         <a class="btn btn-primary" href="{% url 'clock_in' %}">
-                            {% if active_entry %}Switch{% else %}Clock In{% endif %}
+                            {% if active_entry %}{% trans "Switch" %}{% else %}{% trans "Clock In" %}{% endif %}
                         </a>
                         {% if active_entry %}
-                            <a class="btn btn-primary" href="{% url 'clock_out' %}">Clock Out</a>
+                            <a class="btn btn-primary" href="{% url 'clock_out' %}">{% trans "Clock Out" %}</a>
                             <a class="btn btn-{% if active_entry.is_paused %}inverse{% else %}primary{% endif %} prevent-doubleclick"
                                     href="{% url 'toggle_pause' %}">
-                                {% if active_entry.is_paused %}Resume{% else %}Pause{% endif %}
+                                {% if active_entry.is_paused %}{% trans "Resume" %}{% else %}{% trans "Pause" %}{% endif %}
                             </a>
-                            <a class="btn btn-primary" href="{% url 'edit_entry' active_entry.pk %}">Edit</a>
+                            <a class="btn btn-primary" href="{% url 'edit_entry' active_entry.pk %}">{% trans "Edit" %}</a>
                         {% endif %}
                     </div>
                     <div class="hidden-phone pull-right">
-                        <a class="btn btn-primary" href="{% url 'create_entry' %}" title="Add Entry">
+                        <a class="btn btn-primary" href="{% url 'create_entry' %}" title="{% trans "Add Entry" %}">
                             <i class="icon-white icon-plus"></i>
                         </a>
                     </div>
@@ -56,20 +57,21 @@
 
                 <div id="active-text">
                     {% if active_entry %}
-                        You have been clocked into
+                        {% blocktrans %}You have been clocked into
                         <strong>{{ active_entry.activity.name }} for {{ active_entry.project }}</strong>
                         since {{ active_entry.start_time|time }}
+                        {% endblocktrans %}
                         {% ifnotequal active_entry.start_time.date today %}
                             {% if active_entry.start_time.date < week_start or active_entry.start_time.date > week_end %}
-                                on {{ active_entry.start_time|date:'M j' }}
+                                {% trans "on" %} {{ active_entry.start_time|date:'M j' }}
                             {% else %}
-                                on {{ active_entry.start_time|date:"l" }}
+                                {% trans "on" %} {{ active_entry.start_time|date:"l" }}
                             {% endif %}
                         {% endifnotequal %}
-                        ({{ active_entry.get_total_seconds|humanize_seconds }} time clocked{% if active_entry.seconds_paused or active_entry.is_paused %} and {{ active_entry.get_paused_seconds|humanize_seconds }} paused{% endif %}).
+                        ({{ active_entry.get_total_seconds|humanize_seconds }} {% trans "time clocked" %}{% if active_entry.seconds_paused or active_entry.is_paused %} {% trans "and" %} {{ active_entry.get_paused_seconds|humanize_seconds }} {% trans "paused" %}{% endif %}).
                         {% if active_entry.comments %}<blockquote>{{ active_entry.comments }}</blockquote>{% endif %}
                     {% else %}
-                        You are not currently clocked into a project.
+                        {% trans "You are not currently clocked into a project." %}
                     {% endif %}
                 </div>
             </div>
@@ -78,15 +80,15 @@
         <ul class="nav nav-tabs">
             <li{% if active_tab == 'progress' %} class="active"{% endif %}>
                 {% url "dashboard" "progress" as link %}
-                <a class="tab-link" to="progress" href="{{ link|add_parameters:request.GET }}">Progress</a>
+                <a class="tab-link" to="progress" href="{{ link|add_parameters:request.GET }}">{% trans "Progress" %}</a>
             </li>
             <li{% if active_tab == 'all-entries' %} class="active"{% endif %}>
                 {% url "dashboard" "all-entries" as link %}
-                <a class="tab-link" to="all-entries" href="{{ link|add_parameters:request.GET }}">All Entries</a>
+                <a class="tab-link" to="all-entries" href="{{ link|add_parameters:request.GET }}">{% trans "All Entries" %}</a>
             </li>
             <li{% if active_tab == 'online-users' %} class="active"{% endif %}>
                 {% url "dashboard" "online-users" as link %}
-                <a class="tab-link" to="online-users" href="{{ link|add_parameters:request.GET }}">Online Users</a>
+                <a class="tab-link" to="online-users" href="{{ link|add_parameters:request.GET }}">{% trans "Online Users" %}</a>
             </li>
         </ul>
 
@@ -94,9 +96,9 @@
             <div class="tab-pane{% if active_tab == 'progress' %} active{% endif %}" id="progress">
                 <div id="overall-progress">
                     <div id="overall-label">
-                        <span>Total:</span>
-                        {{ total_worked|humanize_hours:"{hours:02d}:{minutes:02d}" }} worked
-                        of {{ total_assigned|humanize_hours:"{hours:02d}:{minutes:02d}" }} expected
+                        <span>{% trans "Total" %}:</span>
+                        {{ total_worked|humanize_hours:"{hours:02d}:{minutes:02d}" }} {% trans "worked" %}
+                        of {{ total_assigned|humanize_hours:"{hours:02d}:{minutes:02d}" }} {% trans "expected" %}
                     </div>
                     <div id="overall-bar"
                         data-worked="{{ total_worked }}"
@@ -108,10 +110,10 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Project</th>
-                                    <th>Hours Assigned</th>
-                                    <th>Hours Worked</th>
-                                    <th class="hidden-phone progress-col">Progress</th>
+                                    <th>{% trans "Project" %}</th>
+                                    <th>{% trans "Hours Assigned" %}</th>
+                                    <th>{% trans "Hours Worked" %}</th>
+                                    <th class="hidden-phone progress-col">{% trans "Progress" %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -133,7 +135,7 @@
                             </tbody>
                         </table>
                     {% else %}
-                        <p>No entries or assignments exist for this week.</p>
+                        <p>{% trans "No entries or assignments exist for this week." %}</p>
                     {% endif %}
                 </div>
             </div>
@@ -145,13 +147,13 @@
                     <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
-                                <th>Project</th>
-                                <th class="hidden-phone">Activity</th>
-                                <th>From</th>
-                                <th>To</th>
-                                <th class="hidden-phone">Pause Time</th>
-                                <th>Total Time</th>
-                                <th class="hidden-phone">Comment</th>
+                                <th>{% trans "Project" %}</th>
+                                <th class="hidden-phone">{% trans "Activity" %}</th>
+                                <th>{% trans "From" %}</th>
+                                <th>{% trans "To" %}</th>
+                                <th class="hidden-phone">{% trans "Pause Time" %}</th>
+                                <th>{% trans "Total Time" %}</th>
+                                <th class="hidden-phone">{% trans "Comment" %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -180,7 +182,7 @@
                                             {% if entry.end_time %}
                                                 {{ entry.end_time|time }}
                                             {% else %}
-                                                current
+                                                {% trans "current" %}
                                             {% endif %}
                                         </td>
                                         <td class="hidden-phone nowrap">
@@ -204,7 +206,7 @@
                         </tbody>
                     </table>
                 {% else %}
-                    <p>No entries exist for this week.</p>
+                    <p>{% trans "No entries exist for this week." %}</p>
                 {% endif %}
             </div>
 
@@ -213,9 +215,9 @@
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Project</th>
-                                <th class="hidden-phone">Since</th>
+                                <th>{% trans "Name" %}</th>
+                                <th>{% trans "Project" %}</th>
+                                <th class="hidden-phone">{% trans "Since" %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -227,9 +229,9 @@
                                         {{ entry.start_time|time }}
                                         {% ifnotequal entry.start_time.date today %}
                                             {% if entry.start_time.date < week_start or entry.start_time.date > week_end %}
-                                                on {{ entry.start_time|date:'M j' }}
+                                                {% trans "on" %} {{ entry.start_time|date:'M j' }}
                                             {% else %}
-                                                on {{ entry.start_time|date:"l" }}
+                                                {% trans "on" %} {{ entry.start_time|date:"l" }}
                                             {% endif %}
                                         {% endifnotequal %}
                                     </td>
@@ -238,7 +240,7 @@
                         </tbody>
                     </table>
                 {% else %}
-                    <p>Currently there are no other users with an active entry.</p>
+                    <p>{% trans "Currently there are no other users with an active entry." %}</p>
                 {% endif %}
             </div>
         </div>

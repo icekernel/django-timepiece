@@ -1,8 +1,9 @@
 {% extends "timepiece/user/base.html" %}
 {% load url from future %}
 {% load bootstrap_toolkit %}
+{% load i18n %}
 
-{% block title %}Users{% endblock title %}
+{% block title %}{% trans "Users" %}{% endblock title %}
 
 {% block content %}
     <div class="row-fluid">
@@ -10,7 +11,7 @@
             <h2>Users</h2>
             <ul class="nav nav-pills">
                 {% if perms.auth.add_user %}
-                    <li><a href='{% url 'create_user' %}'>Create User</a></li>
+                    <li><a href='{% url 'create_user' %}'>{% trans "Create User" %}</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -20,7 +21,7 @@
         <div class="span12">
             <form class='form-inline' accept-charset='UTF-8' method='get' action=''>
                 {{ form|as_bootstrap:"inline" }}
-                <button type='submit' name='submit' class="btn">Search</button>
+                <button type='submit' name='submit' class="btn">{% trans "Search" %}</button>
             </form>
         </div>
     </div>
@@ -34,12 +35,12 @@
             <table class='table table-bordered table-striped table-condensed'>
                 <thead>
                     <tr>
-                        <th>Username</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Time Sheet</th>
-                        <th>Active</th>
+                        <th>{% trans "Username" %}</th>
+                        <th>{% trans "First Name" %}</th>
+                        <th>{% trans "Last Name" %}</th>
+                        <th>{% trans "Email" %}</th>
+                        <th>{% trans "Time Sheet" %}</th>
+                        <th>{% trans "Active" %}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,7 +51,7 @@
                             <td>{{ user.last_name }}</td>
                             <td>{{ user.email }}</td>
 
-                            <td><a href="{% url 'view_user_timesheet' user.pk %}">View Time Sheet</a></td>
+                            <td><a href="{% url 'view_user_timesheet' user.pk %}">{% trans "View Time Sheet" %}</a></td>
                             <td>
                                 {% if user.is_active %}
                                     <span class="label label-success"><i class="icon-white icon-ok"></i></span>

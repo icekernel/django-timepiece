@@ -1,13 +1,14 @@
 {% extends 'timepiece/base.html' %}
 {% load bootstrap_toolkit %}
 {% load url from future %}
+{% load i18n %}
 
-{% block title %}{% if entry %}Update{% else %}Create{% endif %} Entry{% endblock title %}
+{% block title %}{% if entry %}{% trans "Update" %}{% else %}{% trans "Create" %}{% endif %} {% trans "Entry" %}{% endblock title %}
 
 {% block crumbs %}
     {{ block.super }}
     {% if entry %}
-        <li><span class="divider">/</span> <a href="{% url 'edit_entry' entry.pk %}">Update Entry</a></li>
+        <li><span class="divider">/</span> <a href="{% url 'edit_entry' entry.pk %}">{% trans "Update Entry" %}</a></li>
     {% else %}
         <li><span class="divider">/</span> <a href="{% url 'create_entry' %}">Create Entry</a></li>
     {% endif %}
@@ -16,7 +17,7 @@
 {% block content %}
     <div class="row-fluid">
         <div class="span12">
-            <h2>{% if entry %}Update{% else %}Create{% endif %} Entry</h2>
+            <h2>{% if entry %}{% trans "Update" %}{% else %}{% trans "Create" %}{% endif %} {% trans "Entry" %}</h2>
 
             <br style="clear: both;" />
 
@@ -24,8 +25,8 @@
                 {% csrf_token %}
                 {{ form|as_bootstrap:"horizontal" }}
                 <div class="form-actions">
-                    <input class="btn btn-primary" type='submit' name='submit' value='Save' />
-                    <input class="btn" type='button' value='Cancel' onclick="history.back()" />
+                    <input class="btn btn-primary" type='submit' name='submit' value='{% trans "Save" %}' />
+                    <input class="btn" type='button' value='{% trans "Cancel" %}' onclick="history.back()" />
                 </div>
             </form>
         </div>

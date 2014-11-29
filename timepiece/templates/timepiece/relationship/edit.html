@@ -1,18 +1,19 @@
 {% extends "timepiece/project/base.html" %}
 {% load url from future %}
 {% load bootstrap_toolkit %}
+{% load i18n %}
 
-{% block title %}Edit Project Relationship{% endblock title %}
+{% block title %}{% trans "Edit Project Relationship" %}{% endblock title %}
 
 {% block crumbs %}
     {{ block.super }}
-    <li><span class="divider">/</span> <a href="">Edit Relationship</a></li>
+    <li><span class="divider">/</span> <a href="">{% trans "Edit Relationship" %}</a></li>
 {% endblock crumbs %}
 
 {% block content %}
     <div class="row-fluid">
         <div class="span12">
-            <h2>Edit {{ object.user.get_name_or_username }}'s {{ object.project }} Relationship</h2>
+            <h2>{% blocktrans %}Edit {{ object.user.get_name_or_username }}'s {{ object.project }} Relationship{% endblocktrans %}</h2>
 
             <br style="clear: both;" />
 
@@ -20,8 +21,8 @@
                 {% csrf_token %}
                 {{ form|as_bootstrap:"horizontal" }}
                 <div class="form-actions">
-                    <input class="btn btn-primary" type='submit' name='submit' value='Save' />
-                    <input class="btn" type='button' value='Cancel' onclick='history.go(-1)' />
+                    <input class="btn btn-primary" type='submit' name='submit' value='{% trans "Save" %}' />
+                    <input class="btn" type='button' value='{% trans "Cancel" %}' onclick='history.go(-1)' />
                 </div>
             </form>
         </div>

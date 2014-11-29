@@ -1,12 +1,13 @@
 {% extends 'timepiece/invoice/base.html' %}
 {% load timepiece_tags %}
 {% load url from future %}
+{% load i18n %}
 
-{% block title %}Invoice Detail{% endblock title %}
+{% block title %}{% trans "Invoice Detail" %}{% endblock title %}
 
 {% block crumbs %}
     {{ block.super }}
-    <li><span class="divider">/</span> <a href="{% url 'view_invoice' invoice.pk %}">Invoice Detail</a></li>
+    <li><span class="divider">/</span> <a href="{% url 'view_invoice' invoice.pk %}">{% trans "Invoice Detail" %}</a></li>
 {% endblock crumbs %}
 
 {% block content %}
@@ -23,13 +24,13 @@
 
         <div class="span6">
             {% if billable_totals %}
-                <h3>Billable Totals</h3>
+                <h3>{% trans "Billable Totals" %}</h3>
                 {% with totals=billable_totals %}
                     {% include 'timepiece/invoice/_totals.html' %}
                 {% endwith %}
             {% endif %}
             {% if nonbillable_totals %}
-                <h3>Non-billable Totals</h3>
+                <h3>{% trans "Non-billable Totals" %}</h3>
                 {% with totals=nonbillable_totals %}
                     {% include 'timepiece/invoice/_totals.html' %}
                 {% endwith %}

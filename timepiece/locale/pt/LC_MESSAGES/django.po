@@ -1,0 +1,1373 @@
+# django-timepiece pt_BR locale strings
+# Copyright (C) 2014
+# This file is distributed under the same license as the django-timepiece
+# package.
+# Icekernel Developers <support@icekernel.com>, 2014.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.9.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-27 16:21-0200\n"
+"PO-Revision-Date: Mon Oct 13 16:05:05 BRT 2014\n"
+"Last-Translator: Ricardo Buhrer <ricardo@buhrer.net>\n"
+"Language-Team: Portuguese Translations <support@icekernel.com>\n"
+"Language: Brazilian Portuguese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: templates/pagination/pagination.html:7
+#: templates/pagination/pagination.html:11
+msgid "previous"
+msgstr "anterior"
+
+#: templates/pagination/pagination.html:33
+#: templates/pagination/pagination.html:37
+msgid "next"
+msgstr "próxima"
+
+#: templates/timepiece/base.html:68
+msgid "Home"
+msgstr "Página Inicial"
+
+#: templates/timepiece/base.html:82
+msgid "Source-code"
+msgstr "Código-fonte"
+
+#: templates/timepiece/dashboard.html:6 templates/timepiece/navigation.html:71
+msgid "Dashboard"
+msgstr "Painel"
+
+#: templates/timepiece/dashboard.html:30
+msgid "to"
+msgstr "para"
+
+#: templates/timepiece/dashboard.html:38
+msgid "Switch"
+msgstr "Trocar"
+
+#: templates/timepiece/dashboard.html:38
+#: templates/timepiece/entry/clock_in.html:8
+#: templates/timepiece/entry/clock_in.html:11
+msgid "Clock In"
+msgstr "Marcar entrada"
+
+#: templates/timepiece/dashboard.html:41
+#: templates/timepiece/entry/clock_out.html:8
+#: templates/timepiece/entry/clock_out.html:29
+msgid "Clock Out"
+msgstr "Marcar saída"
+
+#: templates/timepiece/dashboard.html:44
+msgid "Resume"
+msgstr "Continuar"
+
+#: templates/timepiece/dashboard.html:44
+msgid "Pause"
+msgstr "Pausar"
+
+#: templates/timepiece/dashboard.html:46
+#: templates/timepiece/business/create_edit.html:6
+#: templates/timepiece/business/create_edit.html:23
+#: templates/timepiece/business/view.html:22
+#: templates/timepiece/contract/view.html:20
+#: templates/timepiece/project/create_edit.html:18
+#: templates/timepiece/project/create_edit.html:23
+#: templates/timepiece/project/view.html:19
+#: templates/timepiece/schedule/edit.html:14
+#: templates/timepiece/user/create_edit.html:7
+#: templates/timepiece/user/create_edit.html:17
+#: templates/timepiece/user/create_edit.html:25
+#: templates/timepiece/user/view.html:19
+msgid "Edit"
+msgstr "Editar"
+
+#: templates/timepiece/dashboard.html:50
+#: templates/timepiece/navigation.html:74
+msgid "Add Entry"
+msgstr "Criar Entrada"
+
+#: templates/timepiece/dashboard.html:60
+#, python-format
+msgid ""
+"You have been clocked into\n"
+"                        <strong>%(active_entry.activity.name)s for "
+"%(active_entry.project)s</strong>\n"
+"                        since %(active_entry.start_time|time)s\n"
+"                        "
+msgstr ""
+"Você deu entrada no\n"
+"                        <strong>%(active_entry.activity.name)s por "
+"%(active_entry.project)s</strong>\n"
+"                        desde %(active_entry.start_time|time)s\n"
+"                        "
+
+#: templates/timepiece/dashboard.html:66 templates/timepiece/dashboard.html:68
+#: templates/timepiece/dashboard.html:232
+#: templates/timepiece/dashboard.html:234
+msgid "on"
+msgstr "em"
+
+#: templates/timepiece/dashboard.html:71
+msgid "time clocked"
+msgstr "hora da batida de ponto"
+
+#: templates/timepiece/dashboard.html:71
+msgid "and"
+msgstr "e"
+
+#: templates/timepiece/dashboard.html:71
+msgid "paused"
+msgstr "pausado"
+
+#: templates/timepiece/dashboard.html:74
+msgid "You are not currently clocked into a project."
+msgstr "Atualmente você não deu entrada em um projeto"
+
+#: templates/timepiece/dashboard.html:83
+#: templates/timepiece/dashboard.html:116
+msgid "Progress"
+msgstr "Progresso"
+
+#: templates/timepiece/dashboard.html:87
+msgid "All Entries"
+msgstr "Todas Entradas"
+
+#: templates/timepiece/dashboard.html:91
+msgid "Online Users"
+msgstr "Usuarios Online"
+
+#: templates/timepiece/dashboard.html:99
+#: templates/timepiece/project/timesheet.html:96
+#: templates/timepiece/reports/hourly.html:66
+#: templates/timepiece/reports/hourly.html:80
+msgid "Total"
+msgstr "Total"
+
+#: templates/timepiece/dashboard.html:100
+msgid "worked"
+msgstr "trabalhado"
+
+#: templates/timepiece/dashboard.html:101
+msgid "expected"
+msgstr "esperado"
+
+#: templates/timepiece/dashboard.html:113
+#: templates/timepiece/dashboard.html:150
+#: templates/timepiece/dashboard.html:219
+#: templates/timepiece/invoice/_edit_entry_list.html:9
+#: templates/timepiece/invoice/_invoice.html:13
+#: templates/timepiece/invoice/_weekly_entry_list_table.html:9
+#: templates/timepiece/invoice/delete_entry.html:36
+#: templates/timepiece/invoice/list.html:44
+#: templates/timepiece/invoice/outstanding.html:91
+#: templates/timepiece/schedule/view.html:51
+msgid "Project"
+msgstr "Projeto"
+
+#: templates/timepiece/dashboard.html:114
+msgid "Hours Assigned"
+msgstr "Horas Assignadas"
+
+#: templates/timepiece/dashboard.html:115
+#: templates/timepiece/contract/list.html:28
+#: templates/timepiece/contract/view.html:72
+msgid "Hours Worked"
+msgstr "Horas Trabalhadas"
+
+#: templates/timepiece/dashboard.html:138
+msgid "No entries or assignments exist for this week."
+msgstr "Não existem entradas ou atribuições para esta semana"
+
+#: templates/timepiece/dashboard.html:151
+#: templates/timepiece/invoice/_edit_entry_list.html:10
+#: templates/timepiece/invoice/_weekly_entry_list_table.html:10
+#: templates/timepiece/invoice/delete_entry.html:37
+#: templates/timepiece/project/timesheet.html:74
+msgid "Activity"
+msgstr "Atividade"
+
+#: templates/timepiece/dashboard.html:152
+msgid "From"
+msgstr "De"
+
+#: templates/timepiece/dashboard.html:153
+msgid "To"
+msgstr "Até"
+
+#: templates/timepiece/dashboard.html:154
+msgid "Pause Time"
+msgstr "Pausar Tempo"
+
+#: templates/timepiece/dashboard.html:155
+msgid "Total Time"
+msgstr "Tempo Total"
+
+#: templates/timepiece/dashboard.html:156
+msgid "Comment"
+msgstr "Comentario"
+
+#: templates/timepiece/dashboard.html:185
+msgid "current"
+msgstr "atual"
+
+#: templates/timepiece/dashboard.html:209
+msgid "No entries exist for this week."
+msgstr "Não existem entradas para esta semana"
+
+#: templates/timepiece/dashboard.html:218
+#: templates/timepiece/business/list.html:38
+#: templates/timepiece/contract/list.html:24
+#: templates/timepiece/contract/view.html:71
+#: templates/timepiece/project/list.html:38
+#: templates/timepiece/reports/hourly.html:52
+#: templates/timepiece/reports/payroll_summary.html:82
+#: templates/timepiece/reports/payroll_summary.html:162
+msgid "Name"
+msgstr "Nome"
+
+#: templates/timepiece/dashboard.html:220
+msgid "Since"
+msgstr "Desde"
+
+#: templates/timepiece/dashboard.html:243
+msgid "Currently there are no other users with an active entry."
+msgstr "No momento não há outros usuários com uma entrada ativa"
+
+#: templates/timepiece/delete_object.html:12
+#: templates/timepiece/delete_object.html:14
+msgid "Are you sure you want to delete"
+msgstr "Tem certeza de que deseja apagar"
+
+#: templates/timepiece/delete_object.html:19
+#: templates/timepiece/business/view.html:23
+#: templates/timepiece/project/view.html:20
+#: templates/timepiece/user/view.html:20
+msgid "Delete"
+msgstr "Apagar"
+
+#: templates/timepiece/delete_object.html:20
+msgid "Do Not Delete"
+msgstr "Não Apagar"
+
+#: templates/timepiece/navigation-crm.html:8
+msgid "CRM"
+msgstr "CRM"
+
+#: templates/timepiece/navigation-crm.html:11
+#: templates/timepiece/contract/view.html:66
+#: templates/timepiece/project/base.html:7
+#: templates/timepiece/project/list.html:6
+#: templates/timepiece/project/list.html:11
+#: templates/timepiece/user/view.html:50
+msgid "Projects"
+msgstr "Projetos"
+
+#: templates/timepiece/navigation-crm.html:14
+#: templates/timepiece/user/base.html:7 templates/timepiece/user/list.html:6
+msgid "Users"
+msgstr "Usuarios"
+
+#: templates/timepiece/navigation-crm.html:17
+#: templates/timepiece/business/base.html:9
+#: templates/timepiece/business/list.html:6
+#: templates/timepiece/business/list.html:11
+msgid "Businesses"
+msgstr "Negócios"
+
+#: templates/timepiece/navigation-crm.html:20
+#: templates/timepiece/contract/base.html:7
+#: templates/timepiece/project/view.html:60
+msgid "Contracts"
+msgstr "Contratos"
+
+#: templates/timepiece/navigation-management.html:8
+msgid "Management"
+msgstr "Gestão"
+
+#: templates/timepiece/navigation-management.html:11
+#: templates/timepiece/reports/base.html:13
+msgid "Billable Hours"
+msgstr "Horas Faturáveis"
+
+#: templates/timepiece/navigation-management.html:12
+#: templates/timepiece/reports/base.html:16
+msgid "Hourly"
+msgstr "Por Hora"
+
+#: templates/timepiece/navigation-management.html:15
+#: templates/timepiece/reports/base.html:21
+msgid "Payroll Summary"
+msgstr "Resumo da folha de pagamento"
+
+#: templates/timepiece/navigation-management.html:16
+#: templates/timepiece/reports/base.html:24
+msgid "Productivity"
+msgstr "Produtividade"
+
+#: templates/timepiece/navigation-management.html:22
+msgid "Admin"
+msgstr "Admin"
+
+#: templates/timepiece/navigation-management.html:25
+#: templates/timepiece/invoice/base.html:7
+#: templates/timepiece/invoice/list.html:6
+msgid "Invoices"
+msgstr "Faturas"
+
+#: templates/timepiece/navigation-management.html:28
+#: templates/timepiece/schedule/base.html:9
+msgid "Weekly Schedule"
+msgstr "Programação Semanal"
+
+#: templates/timepiece/navigation-quick-clock-in.html:9
+msgid "Clock in..."
+msgstr "Marcar entrada..."
+
+#: templates/timepiece/navigation-quick-clock-in.html:10
+msgid "Add Entry..."
+msgstr "Adicionar entrada..."
+
+#: templates/timepiece/navigation-timesheet.html:6
+#: templates/timepiece/navigation.html:72
+#: templates/timepiece/contract/view.html:73
+#: templates/timepiece/project/list.html:41
+#: templates/timepiece/project/list.html:50
+#: templates/timepiece/project/timesheet.html:11
+#: templates/timepiece/user/list.html:42
+#: templates/timepiece/user/timesheet/change.html:10
+msgid "Time Sheet"
+msgstr "Folha de Ponto"
+
+#: templates/timepiece/navigation.html:10
+#: templates/timepiece/navigation.html:58
+msgid "Timepiece"
+msgstr "Relógio"
+
+#: templates/timepiece/navigation.html:27
+msgid "Settings"
+msgstr "Configurações"
+
+#: templates/timepiece/navigation.html:28
+msgid "Change Password"
+msgstr "Alterar Senha"
+
+#: templates/timepiece/navigation.html:30
+#: templates/timepiece/navigation.html:75
+msgid "Logout"
+msgstr "Fazer Logout"
+
+#: templates/timepiece/navigation.html:35
+msgid "Login"
+msgstr "Fazer Login"
+
+#: templates/timepiece/navigation.html:73
+msgid "Schedule"
+msgstr "Agenda"
+
+#: templates/timepiece/quick_search.html:5
+msgid "Search Results"
+msgstr "Resultados de Busca"
+
+#: templates/timepiece/quick_search.html:19
+#: templates/timepiece/business/list.html:24
+#: templates/timepiece/invoice/list.html:27
+#: templates/timepiece/project/list.html:24
+#: templates/timepiece/user/list.html:24
+msgid "Search"
+msgstr "Buscar"
+
+#: templates/timepiece/business/create_edit.html:6
+#: templates/timepiece/business/create_edit.html:13
+#: templates/timepiece/business/create_edit.html:23
+#: templates/timepiece/business/list.html:14
+msgid "Create Business"
+msgstr "Criar Negócio"
+
+#: templates/timepiece/business/create_edit.html:15
+msgid "Edit Business"
+msgstr "Editar Negócio"
+
+#: templates/timepiece/business/list.html:39
+#: templates/timepiece/business/view.html:34
+#: templates/timepiece/project/list.html:40
+#: templates/timepiece/project/view.html:55
+msgid "Description"
+msgstr "Descrição"
+
+#: templates/timepiece/business/view.html:32
+msgid "Short name"
+msgstr "Nome curto"
+
+#: templates/timepiece/business/view.html:33
+#: templates/timepiece/user/list.html:41
+msgid "Email"
+msgstr "Email"
+
+#: templates/timepiece/business/view.html:35
+#: templates/timepiece/contract/contract_hour.txt:7
+#: templates/timepiece/contract/view.html:110
+msgid "Notes"
+msgstr "Anotações"
+
+#: templates/timepiece/contract/contract_hour.txt:2
+msgid "Contract"
+msgstr "Contrato"
+
+#: templates/timepiece/contract/contract_hour.txt:3
+#: templates/timepiece/contract/view.html:107
+#: templates/timepiece/invoice/_edit_entry_list.html:11
+#: templates/timepiece/invoice/_weekly_entry_list_table.html:11
+#: templates/timepiece/invoice/delete_entry.html:38
+#: templates/timepiece/project/timesheet.html:79
+msgid "Hours"
+msgstr "Horas"
+
+#: templates/timepiece/contract/contract_hour.txt:4
+#: templates/timepiece/contract/view.html:30
+#: templates/timepiece/contract/view.html:108
+#: templates/timepiece/invoice/_invoice.html:17
+#: templates/timepiece/invoice/list.html:45
+#: templates/timepiece/invoice/outstanding.html:94
+#: templates/timepiece/project/view.html:43
+msgid "Status"
+msgstr "Estado"
+
+#: templates/timepiece/contract/contract_hour.txt:5
+msgid "Date requested"
+msgstr "Data da solicitação"
+
+#: templates/timepiece/contract/contract_hour.txt:6
+msgid "Date approved"
+msgstr "Data da aprovação"
+
+#: templates/timepiece/contract/hours_email.txt:2
+msgid "New contract hour record with pending hours created"
+msgstr "Novo registro de hora de contrato criado com horas pendentes"
+
+#: templates/timepiece/contract/hours_email.txt:3
+msgid "Contract hour record with pending hours has been deleted"
+msgstr "Registro de hora de contrato criado com horas pendentes apagado"
+
+#: templates/timepiece/contract/hours_email.txt:4
+msgid "Contract hour record with pending hours has been changed"
+msgstr "Registro de hora de contrato criado com horas pendentes alterado"
+
+#: templates/timepiece/contract/hours_email.txt:6
+msgid "Previously"
+msgstr "Anteriormente"
+
+#: templates/timepiece/contract/hours_email.txt:9
+msgid "Now"
+msgstr "Agora"
+
+#: templates/timepiece/contract/hours_email.txt:11
+msgid "View contract at"
+msgstr "Ver contrato em"
+
+#: templates/timepiece/contract/list.html:6
+#: templates/timepiece/contract/list.html:20
+msgid "Current Contracts"
+msgstr "Contratos atuais"
+
+#: templates/timepiece/contract/list.html:25
+#: templates/timepiece/contract/view.html:31
+msgid "Start Date"
+msgstr "Data de inicio"
+
+#: templates/timepiece/contract/list.html:26
+#: templates/timepiece/contract/view.html:39
+msgid "End Date"
+msgstr "Data de término"
+
+#: templates/timepiece/contract/list.html:27
+#: templates/timepiece/contract/view.html:47
+#: templates/timepiece/contract/view.html:103
+msgid "Contract Hours"
+msgstr "Horas de contrato"
+
+#: templates/timepiece/contract/list.html:29
+msgid "Progress: days elapsed/hours worked"
+msgstr "Progresso: dias decorridos/horas trabalhadas"
+
+#: templates/timepiece/contract/list.html:30
+msgid "Contract Type"
+msgstr "Tipo de Contrato"
+
+#: templates/timepiece/contract/list.html:33
+#: templates/timepiece/contract/view.html:77
+#: templates/timepiece/invoice/outstanding.html:99
+#: templates/timepiece/project/view.html:44
+msgid "Billable"
+msgstr "Faturável"
+
+#: templates/timepiece/contract/list.html:34
+#: templates/timepiece/contract/view.html:78
+#: templates/timepiece/invoice/outstanding.html:100
+msgid "Non-billable"
+msgstr "Não Faturável"
+
+#: templates/timepiece/contract/list.html:40
+#: templates/timepiece/contract/view.html:33
+msgid "This contract has expired."
+msgstr "Este contrato expirou."
+
+#: templates/timepiece/contract/list.html:42
+msgid "This contract will expire in less than 2 weeks."
+msgstr "Este contrato irá expirar em menos de duas semanas."
+
+#: templates/timepiece/contract/view.html:28
+msgid "Contract Info"
+msgstr "Informação Contratual"
+
+#: templates/timepiece/contract/view.html:35
+msgid "This contract will expire in less than two weeks."
+msgstr "Este contrato irá expirar em menos de duas semanas."
+
+#: templates/timepiece/contract/view.html:55
+msgid "Hours Worked (billable)"
+msgstr "Horas trabalhadas (faturáveis)"
+
+#: templates/timepiece/contract/view.html:61
+msgid "Hours Remaining"
+msgstr "Horas Restantes"
+
+#: templates/timepiece/contract/view.html:62
+msgid "Type"
+msgstr "Tipo"
+
+#: templates/timepiece/contract/view.html:74
+msgid "Hours Report"
+msgstr "Relatorio de Horas"
+
+#: templates/timepiece/contract/view.html:96
+msgid "This contract is not associated with any projects."
+msgstr "Este contrato não está associado a qualquer projeto."
+
+#: templates/timepiece/contract/view.html:106
+msgid "Date Requested"
+msgstr "Data de solicitação"
+
+#: templates/timepiece/contract/view.html:109
+msgid "Date Approved"
+msgstr "Data de aprovação"
+
+#: templates/timepiece/entry/clock_in.html:20
+msgid "Clock Into Project"
+msgstr "Marcar ponto no projeto"
+
+#: templates/timepiece/entry/clock_in.html:27
+msgid "Switching Projects"
+msgstr "Mudando de Projeto"
+
+#: templates/timepiece/entry/clock_in.html:28
+#, python-format
+msgid ""
+"You are currently clocked into %(active.activity.name)s for "
+"%(active.project)s with %(active.get_total_seconds|humanize_seconds)s time "
+"clocked. Switching to a new project below will clock out of this entry and "
+"start a new one. Please enter any notes about switching below."
+msgstr ""
+"Atualmente você esta registrando ponto em%(active.activity.name)s para "
+"%(active.project)s com %(active.get_total_seconds|humanize_seconds)s tempo "
+"contabilizado. Mudando para um projeto novo irá te retirar desta entrada e "
+"iniciará uma nova. Por favor insira qualquer comentario sobre a alteração   "
+"abaixo."
+
+#: templates/timepiece/entry/clock_in.html:38
+#: templates/timepiece/entry/clock_out.html:30
+#: templates/timepiece/entry/create_edit.html:29
+#: templates/timepiece/invoice/create.html:26
+#: templates/timepiece/invoice/delete.html:23
+#: templates/timepiece/invoice/delete_entry.html:62
+#: templates/timepiece/project/create_edit.html:32
+#: templates/timepiece/relationship/delete.html:22
+#: templates/timepiece/relationship/edit.html:25
+#: templates/timepiece/user/create_edit.html:32
+#: templates/timepiece/user/settings.html:25
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/timepiece/entry/clock_out.html:11
+msgid "Clock Out of"
+msgstr "Marcar saída de"
+
+#: templates/timepiece/entry/clock_out.html:20
+#, python-format
+msgid "Clock Out of %(entry.activity.name)s on %(entry.project)s"
+msgstr "Marcar saída de %(entry.activity.name)s no %(entry.project)s"
+
+#: templates/timepiece/entry/create_edit.html:6
+#: templates/timepiece/entry/create_edit.html:20
+#: templates/timepiece/invoice/outstanding.html:43
+#: templates/timepiece/project/timesheet.html:28
+#: templates/timepiece/reports/payroll_summary.html:40
+#: templates/timepiece/schedule/edit.html:46
+#: templates/timepiece/schedule/view.html:34
+msgid "Update"
+msgstr "Atualizar"
+
+#: templates/timepiece/entry/create_edit.html:6
+#: templates/timepiece/entry/create_edit.html:20
+msgid "Create"
+msgstr "Criar"
+
+#: templates/timepiece/entry/create_edit.html:6
+#: templates/timepiece/entry/create_edit.html:20
+#: templates/timepiece/invoice/delete_entry.html:29
+msgid "Entry"
+msgstr "Entrada"
+
+#: templates/timepiece/entry/create_edit.html:11
+msgid "Update Entry"
+msgstr "Atualizar Entrada"
+
+#: templates/timepiece/entry/create_edit.html:28
+#: templates/timepiece/project/create_edit.html:31
+#: templates/timepiece/relationship/edit.html:24
+#: templates/timepiece/user/create_edit.html:31
+#: templates/timepiece/user/settings.html:24
+msgid "Save"
+msgstr "Salvar"
+
+#: templates/timepiece/entry/delete.html:5
+#: templates/timepiece/entry/delete.html:9
+#: templates/timepiece/entry/delete.html:15
+msgid "Delete Entry"
+msgstr "Apagar Entrada"
+
+#: templates/timepiece/entry/delete.html:21
+msgid "Are you sure you want to delete this entry?"
+msgstr "Tem certeza de que quer apagar esta entrada?"
+
+#: templates/timepiece/entry/delete.html:24
+#: templates/timepiece/entry/reject.html:18
+#: templates/timepiece/user/timesheet/change.html:33
+#: templates/timepiece/user/timesheet/reject.html:17
+msgid "Yes"
+msgstr "Sim"
+
+#: templates/timepiece/entry/delete.html:25
+#: templates/timepiece/entry/reject.html:19
+#: templates/timepiece/user/timesheet/change.html:34
+#: templates/timepiece/user/timesheet/reject.html:18
+msgid "No"
+msgstr "Não"
+
+#: templates/timepiece/entry/reject.html:4
+#: templates/timepiece/entry/reject.html:9
+msgid "Reject Entry"
+msgstr "Rejeitar Entrada"
+
+#: templates/timepiece/entry/reject.html:15
+msgid "Are you sure you want to reject this entry?"
+msgstr "Tem certeza que deseja rejeitar esta entrada?"
+
+#: templates/timepiece/invoice/_edit_entry_list.html:6
+#: templates/timepiece/invoice/_weekly_entry_list_table.html:6
+#: templates/timepiece/invoice/delete_entry.html:33
+#: templates/timepiece/project/timesheet.html:72
+msgid "Date"
+msgstr "Data"
+
+#: templates/timepiece/invoice/_edit_entry_list.html:7
+#: templates/timepiece/invoice/_weekly_entry_list_table.html:7
+#: templates/timepiece/invoice/delete_entry.html:34
+#: templates/timepiece/project/timesheet.html:73
+msgid "User"
+msgstr "Usuario"
+
+#: templates/timepiece/invoice/_edit_entry_list.html:8
+#: templates/timepiece/invoice/_weekly_entry_list_table.html:8
+#: templates/timepiece/invoice/delete_entry.html:35
+msgid "Time"
+msgstr "Hora"
+
+#: templates/timepiece/invoice/_edit_entry_list.html:12
+#: templates/timepiece/invoice/_invoice.html:45
+#: templates/timepiece/invoice/_weekly_entry_list_table.html:12
+#: templates/timepiece/invoice/delete_entry.html:39
+#: templates/timepiece/invoice/list.html:50
+#: templates/timepiece/project/timesheet.html:80
+msgid "Comments"
+msgstr "Comentarios"
+
+#: templates/timepiece/invoice/_edit_entry_list.html:13
+#: templates/timepiece/invoice/_edit_entry_list.html:33
+msgid "Remove"
+msgstr "Remover"
+
+#: templates/timepiece/invoice/_edit_entry_list.html:18
+#, python-format
+msgid "Week of %(entry.start_time|week_start|date)s"
+msgstr "Semana de %(entry.start_time|week_start|date)s"
+
+#: templates/timepiece/invoice/_invoice.html:8
+msgid "Number"
+msgstr "Numero"
+
+#: templates/timepiece/invoice/_invoice.html:21
+msgid "Created by"
+msgstr "Criado por"
+
+#: templates/timepiece/invoice/_invoice.html:25
+#: templates/timepiece/invoice/list.html:47
+msgid "Created on"
+msgstr "Criado em"
+
+#: templates/timepiece/invoice/_invoice.html:29
+msgid "Last modified"
+msgstr "Ultima modificação"
+
+#: templates/timepiece/invoice/_invoice.html:35
+#: templates/timepiece/invoice/list.html:48
+msgid "Starting on"
+msgstr "Iniciando em"
+
+#: templates/timepiece/invoice/_invoice.html:36
+msgid "Not specified"
+msgstr "Não especificado"
+
+#: templates/timepiece/invoice/_subnav.html:5
+msgid "Edit Invoice for"
+msgstr "Editar Fatura para"
+
+#: templates/timepiece/invoice/_subnav.html:8
+msgid "Entries for invoice of"
+msgstr "Entradas para Fatura de"
+
+#: templates/timepiece/invoice/_subnav.html:11
+msgid "Invoice Details for"
+msgstr "Detalhes de Fatura para"
+
+#: templates/timepiece/invoice/_subnav.html:14
+msgid "hours"
+msgstr "horas"
+
+#: templates/timepiece/invoice/_subnav.html:16
+#, python-format
+msgid "from %(invoice.start)s to %(invoice.end)s"
+msgstr "desde %(invoice.start)s a %(invoice.end)s"
+
+#: templates/timepiece/invoice/_subnav.html:18
+msgid "through"
+msgstr "até inclusive"
+
+#: templates/timepiece/invoice/_subnav.html:23
+#: templates/timepiece/invoice/list.html:14
+#: templates/timepiece/invoice/outstanding.html:7
+#: templates/timepiece/invoice/outstanding.html:11
+#: templates/timepiece/invoice/outstanding.html:17
+#: templates/timepiece/invoice/outstanding.html:20
+msgid "Outstanding Hours"
+msgstr "Horas Pendentes"
+
+#: templates/timepiece/invoice/_subnav.html:26
+#: templates/timepiece/invoice/list.html:17
+#: templates/timepiece/invoice/outstanding.html:24
+msgid "Previous Invoices"
+msgstr "Faturas Previas"
+
+#: templates/timepiece/invoice/_subnav.html:30
+#: templates/timepiece/invoice/_subnav.html:32
+msgid "View Invoice"
+msgstr "Visualizar Fatura"
+
+#: templates/timepiece/invoice/_subnav.html:37
+#: templates/timepiece/invoice/_subnav.html:39
+#: templates/timepiece/invoice/edit.html:6
+#: templates/timepiece/invoice/edit.html:10
+msgid "Edit Invoice"
+msgstr "Editar Fatura"
+
+#: templates/timepiece/invoice/_subnav.html:44
+#: templates/timepiece/invoice/_subnav.html:46
+#: templates/timepiece/invoice/view_entries.html:10
+msgid "View Entries"
+msgstr "Ver Entradas"
+
+#: templates/timepiece/invoice/_subnav.html:50
+#: templates/timepiece/project/timesheet.html:30
+msgid "Download CSV"
+msgstr "Baixar CSV"
+
+#: templates/timepiece/invoice/_totals.html:4
+#: templates/timepiece/invoice/create.html:34
+#: templates/timepiece/invoice/create.html:53
+msgid "Activity Type"
+msgstr "Tipo de Atividade"
+
+#: templates/timepiece/invoice/_totals.html:5
+#: templates/timepiece/invoice/create.html:35
+#: templates/timepiece/invoice/create.html:54
+msgid "Total Hours"
+msgstr "Horas Totais"
+
+#: templates/timepiece/invoice/_weekly_entry_list.html:4
+msgid "Billable entries"
+msgstr "Entradas faturaveis"
+
+#: templates/timepiece/invoice/_weekly_entry_list.html:8
+#: templates/timepiece/invoice/edit.html:38
+msgid "No billable entries were found."
+msgstr "Zero entradas faturaveis encontradas."
+
+#: templates/timepiece/invoice/_weekly_entry_list.html:12
+msgid "Non-billable entries"
+msgstr "Entradas não faturáveis"
+
+#: templates/timepiece/invoice/_weekly_entry_list.html:16
+#: templates/timepiece/invoice/edit.html:46
+msgid "No non-billable entries were found."
+msgstr "Zero entradas não faturaveis encontradas."
+
+#: templates/timepiece/invoice/_weekly_entry_list_table.html:19
+msgid "Week of"
+msgstr "Semana de"
+
+#: templates/timepiece/invoice/create.html:6
+#: templates/timepiece/invoice/delete.html:6
+msgid "Invoice Hours for Time Sheet"
+msgstr "Faturar Horas para Folha Ponto"
+
+#: templates/timepiece/invoice/create.html:10
+msgid "Confirm Invoice"
+msgstr "Confirmar Fatura"
+
+#: templates/timepiece/invoice/create.html:16
+#, python-format
+msgid "Invoice %(project.name)s Hours "
+msgstr "Faturar Horas de %(project.name)s "
+
+#: templates/timepiece/invoice/create.html:16
+#, python-format
+msgid "from %(from_date.date|date:'M j, Y')s to %(to_date.date|date:'M j, Y')s"
+msgstr "de %(from_date.date|date:'M j, Y')s a %(to_date.date|date:'M j, Y')s"
+
+#: templates/timepiece/invoice/create.html:16
+#, python-format
+msgid "through %(to_date.date|date:'M j, Y')s"
+msgstr "até dia %(to_date.date|date:'M j, Y')s inclusive"
+
+#: templates/timepiece/invoice/create.html:25
+msgid "Create Invoice"
+msgstr "Criar Fatura"
+
+#: templates/timepiece/invoice/create.html:31
+#: templates/timepiece/invoice/view.html:27
+msgid "Billable Totals"
+msgstr "Totais faturáveis"
+
+#: templates/timepiece/invoice/create.html:50
+#: templates/timepiece/invoice/view.html:33
+msgid "Non-billable Totals"
+msgstr "Totais não faturáveis"
+
+#: templates/timepiece/invoice/create.html:74
+#: templates/timepiece/invoice/delete.html:30
+msgid "Selected Entries"
+msgstr "Entradas Selecionadas"
+
+#: templates/timepiece/invoice/delete.html:10
+#: templates/timepiece/invoice/delete.html:22
+#: templates/timepiece/invoice/edit.html:25
+msgid "Delete Invoice"
+msgstr "Apagar Fatura"
+
+#: templates/timepiece/invoice/delete.html:17
+#, python-format
+msgid "Delete the invoice for %(project.name)s hours"
+msgstr "Apagar a fatura para horas de %(project.name)s "
+
+#: templates/timepiece/invoice/delete.html:17
+#, python-format
+msgid "from %(from_date)s to %(to_date)s"
+msgstr "de %(from_date)s a %(to_date)s"
+
+#: templates/timepiece/invoice/delete.html:17
+#, python-format
+msgid "through %(to_date)s"
+msgstr "até data %(to_date)s inclusive"
+
+#: templates/timepiece/invoice/delete.html:19
+msgid "Deleting this invoice will return all associated entries to \\"
+msgstr "Apagar esta fatura irá retornar todas entradas associadas para \\"
+
+#: templates/timepiece/invoice/delete_entry.html:6
+msgid "Remove Entry from Invoice"
+msgstr "Remover Entrada da Fatura"
+
+#: templates/timepiece/invoice/delete_entry.html:10
+#: templates/timepiece/invoice/delete_entry.html:61
+msgid "Remove Entry"
+msgstr "Remover Entrada"
+
+#: templates/timepiece/invoice/delete_entry.html:16
+msgid "Are you sure you want to remove this entry from the current invoice?"
+msgstr "Você tem certeza que deseja remover esta entrada da fatura atual?"
+
+#: templates/timepiece/invoice/delete_entry.html:22
+#: templates/timepiece/invoice/list.html:42
+msgid "Invoice"
+msgstr "Fatura"
+
+#: templates/timepiece/invoice/edit.html:24
+msgid "Update Invoice"
+msgstr "Atualizar Fatura"
+
+#: templates/timepiece/invoice/edit.html:33
+msgid "Selected Billable Entries"
+msgstr "Entradas Faturáveis Selecionadas"
+
+#: templates/timepiece/invoice/edit.html:41
+msgid "Selected Non-billable Entries"
+msgstr "Entradas não faturáveis"
+
+#: templates/timepiece/invoice/list.html:11
+msgid "All Invoices"
+msgstr "Todas Faturas"
+
+#: templates/timepiece/invoice/list.html:43
+msgid "Reference"
+msgstr "Referência"
+
+#: templates/timepiece/invoice/list.html:46
+msgid "Invoiced by"
+msgstr "Faturado por"
+
+#: templates/timepiece/invoice/list.html:49
+msgid "Ending on"
+msgstr "Concluíndo em"
+
+#: templates/timepiece/invoice/list.html:71
+msgid "There are no invoices."
+msgstr "Não há faturas"
+
+#: templates/timepiece/invoice/outstanding.html:54
+#: templates/timepiece/reports/payroll_summary.html:48
+msgid ""
+"<strong>Warning:</strong> The following users have <strong>unverified</"
+"strong> time during this period:"
+msgstr ""
+"<strong>Aviso:</strong> Os seguintes usuários tem tempo <strong>não "
+"confirmado</strong> durante este periodo:"
+
+#: templates/timepiece/invoice/outstanding.html:65
+#: templates/timepiece/reports/payroll_summary.html:58
+msgid ""
+"<strong>Warning:</strong> The following users have <strong>unapproved</"
+"strong> time during this period:"
+msgstr ""
+"<strong>Aviso:</strong> Os seguintes usuários tem tempo <strong>não "
+"aprovado</strong> durante este periodo:"
+
+#: templates/timepiece/invoice/outstanding.html:75
+#: templates/timepiece/reports/payroll_summary.html:68
+msgid "All time verified and approved"
+msgstr "Todas horas confirmadas e aprovadas"
+
+#: templates/timepiece/invoice/outstanding.html:86
+#, python-format
+msgid "Summary of %(type.grouper)s Entries"
+msgstr "Resumo de Entradas %(type.grouper)s "
+
+#: templates/timepiece/invoice/outstanding.html:92
+msgid "Active Contracts"
+msgstr "Contratos Ativos"
+
+#: templates/timepiece/invoice/outstanding.html:93
+#: templates/timepiece/project/list.html:39
+#: templates/timepiece/project/view.html:34
+msgid "Business"
+msgstr "Negócios"
+
+#: templates/timepiece/invoice/outstanding.html:95
+msgid "Uninvoiced Hours"
+msgstr "Horas não faturadas"
+
+#: templates/timepiece/invoice/outstanding.html:122
+#: templates/timepiece/invoice/outstanding.html:124
+msgid "Make Invoice"
+msgstr "Criar Fatura"
+
+#: templates/timepiece/invoice/outstanding.html:132
+msgid "There are no outstanding hours which match your filter criteria."
+msgstr ""
+"Não há horas pendentes que atendam ao critério de filtragem selecionado"
+
+#: templates/timepiece/invoice/view.html:6
+#: templates/timepiece/invoice/view.html:10
+#: templates/timepiece/invoice/view_entries.html:6
+msgid "Invoice Detail"
+msgstr "Detalhe de Fatura"
+
+#: templates/timepiece/project/create_edit.html:11
+#: templates/timepiece/project/create_edit.html:18
+#: templates/timepiece/project/create_edit.html:23
+#: templates/timepiece/project/list.html:14
+msgid "Create Project"
+msgstr "Criar Projeto"
+
+#: templates/timepiece/project/create_edit.html:13
+msgid "Edit Project"
+msgstr "Editar Projeto"
+
+#: templates/timepiece/project/create_edit.html:23
+msgid "for"
+msgstr "para"
+
+#: templates/timepiece/project/timesheet.html:6
+#: templates/timepiece/project/timesheet.html:17
+msgid "Time Sheet for"
+msgstr "Folha Ponto para"
+
+#: templates/timepiece/project/timesheet.html:19
+msgid "Project Information"
+msgstr "Informação de Projeto"
+
+#: templates/timepiece/project/timesheet.html:40
+msgid "User Summary"
+msgstr "Resumo do Usuário"
+
+#: templates/timepiece/project/timesheet.html:54
+msgid "Activity Summary"
+msgstr "Resumo de Atividade"
+
+#: templates/timepiece/project/timesheet.html:75
+msgid "Location"
+msgstr "Local"
+
+#: templates/timepiece/project/timesheet.html:76
+msgid "Time In"
+msgstr "Hora de entrada"
+
+#: templates/timepiece/project/timesheet.html:77
+msgid "Time Out"
+msgstr "Hora de saída"
+
+#: templates/timepiece/project/timesheet.html:78
+msgid "Breaks"
+msgstr "Paradas"
+
+#: templates/timepiece/project/timesheet.html:102
+msgid "No entries exist for this time sheet."
+msgstr "Não há entradas nesta Folha Ponto"
+
+#: templates/timepiece/project/view.html:23
+#: templates/timepiece/user/list.html:54 templates/timepiece/user/view.html:23
+msgid "View Time Sheet"
+msgstr "Visualizar Folha Ponto"
+
+#: templates/timepiece/project/view.html:46
+msgid "Point Person"
+msgstr "Pessoal ponto focal"
+
+#: templates/timepiece/project/view.html:57
+msgid "Tracker URL"
+msgstr "Tracker URL"
+
+#: templates/timepiece/project/view.html:67
+msgid "This project is not associated with any contracts."
+msgstr "Este projeto não esta associado com nenhum contrato"
+
+#: templates/timepiece/project/view.html:82
+#: templates/timepiece/user/view.html:57
+msgid "Edit "
+msgstr "Editar "
+
+#: templates/timepiece/project/view.html:82
+#: templates/timepiece/user/view.html:57
+msgid "'s relationship to "
+msgstr "relação a"
+
+#: templates/timepiece/project/view.html:87
+#: templates/timepiece/user/view.html:62
+msgid "Remove "
+msgstr "Remover"
+
+#: templates/timepiece/project/view.html:87
+#: templates/timepiece/user/view.html:62
+msgid " from "
+msgstr " de "
+
+#: templates/timepiece/project/view.html:98
+#: templates/timepiece/user/view.html:74
+msgid "Add"
+msgstr "Adicionar"
+
+#: templates/timepiece/relationship/delete.html:5
+#: templates/timepiece/relationship/delete.html:15
+msgid "Remove Project Relationship"
+msgstr "Remover relação com projeto"
+
+#: templates/timepiece/relationship/delete.html:9
+msgid "Remove Relationship"
+msgstr "Remover Relação"
+
+#: templates/timepiece/relationship/delete.html:19
+#, python-format
+msgid ""
+"Are you sure you want to remove the assignment of %(object.project)s to "
+"%(object.user.get_name_or_username)s?"
+msgstr ""
+"Tem certeza de que deseja remover a atribuição de%(object.project)s a "
+"%(object.user.get_name_or_username)s?"
+
+#: templates/timepiece/relationship/delete.html:21
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: templates/timepiece/relationship/edit.html:6
+msgid "Edit Project Relationship"
+msgstr "Editar Relação do Projeto"
+
+#: templates/timepiece/relationship/edit.html:10
+msgid "Edit Relationship"
+msgstr "Editar Relação"
+
+#: templates/timepiece/relationship/edit.html:16
+#, python-format
+msgid ""
+"Edit %(object.user.get_name_or_username)s's %(object.project)s Relationship"
+msgstr ""
+"Editar Relação do %(object.user.get_name_or_username)s com %(object.project)s"
+
+#: templates/timepiece/reports/base.html:9
+msgid "Reports"
+msgstr "Relatórios"
+
+#: templates/timepiece/reports/base.html:29
+msgid "Estimation Accuracy"
+msgstr "Precisão de Estimativa"
+
+#: templates/timepiece/reports/billable_hours.html:6
+#: templates/timepiece/reports/billable_hours.html:14
+msgid "Billable Hours Report"
+msgstr "Relatório de Horas Faturáveis"
+
+#: templates/timepiece/reports/billable_hours.html:44
+#: templates/timepiece/reports/estimation_accuracy.html:39
+msgid "There are no entries which match your query."
+msgstr "Não há entradas correspondentes a sua busqueda"
+
+#: templates/timepiece/reports/billable_hours.html:68
+msgid "Apply Filters"
+msgstr "Aplicar Filtros"
+
+#: templates/timepiece/reports/billable_hours.html:77
+msgid "select all"
+msgstr "selecionar todos"
+
+#: templates/timepiece/reports/billable_hours.html:78
+msgid "select none"
+msgstr "selecionar nenhum"
+
+#: templates/timepiece/reports/estimation_accuracy.html:6
+#: templates/timepiece/reports/estimation_accuracy.html:14
+msgid "Estimation Accuracy Report"
+msgstr "Relatório de Precisão de Estimativa"
+
+#: templates/timepiece/reports/hourly.html:6
+#: templates/timepiece/reports/hourly.html:16
+msgid "Hourly Report"
+msgstr "Relatório por Hora"
+
+#: templates/timepiece/reports/hourly.html:36
+msgid "Update Filters"
+msgstr "Atualizar Filtros"
+
+#: templates/timepiece/reports/hourly.html:38
+msgid "Export User Summary"
+msgstr "Exportar Resumo de Usuario"
+
+#: templates/timepiece/reports/hourly.html:39
+msgid "Export Project Summary"
+msgstr "Exportar Resumo de Projeto"
+
+#: templates/timepiece/reports/hourly.html:89
+#: templates/timepiece/reports/payroll_summary.html:148
+#: templates/timepiece/reports/payroll_summary.html:189
+msgid "No entries found."
+msgstr "Zero entradas encontradas."
+
+#: templates/timepiece/reports/payroll_summary.html:6
+#: templates/timepiece/reports/payroll_summary.html:14
+msgid "Payroll Summary Report"
+msgstr "Relatorio Resumo de Folha de Pagamento"
+
+#: templates/timepiece/reports/payroll_summary.html:75
+msgid "Hourly Summary"
+msgstr "Resumo por Hora"
+
+#: templates/timepiece/reports/payroll_summary.html:85
+msgid "Total Billable Hours"
+msgstr "Horas Faturáveis Totais"
+
+#: templates/timepiece/reports/payroll_summary.html:88
+msgid "Non-Billable Projects"
+msgstr "Projetos Não Faturáveis"
+
+#: templates/timepiece/reports/payroll_summary.html:89
+msgid "Total Non-Billable Hours"
+msgstr "Horas Não Faturáveis Totais"
+
+#: templates/timepiece/reports/payroll_summary.html:91
+msgid "Total Worked Hours"
+msgstr "Horas Trabalhadas Totais"
+
+#: templates/timepiece/reports/payroll_summary.html:93
+msgid "Paid Leave"
+msgstr "Licença Remunerada"
+
+#: templates/timepiece/reports/payroll_summary.html:94
+msgid "Total Leave Hours"
+msgstr "Total de Horas de Licença"
+
+#: templates/timepiece/reports/payroll_summary.html:96
+msgid "Grand Total"
+msgstr "Total Geral"
+
+#: templates/timepiece/reports/payroll_summary.html:156
+msgid "Weekly Summary"
+msgstr "Resumo Semanal"
+
+#: templates/timepiece/reports/payroll_summary.html:166
+msgid "Overtime"
+msgstr "Horas Extras"
+
+#: templates/timepiece/reports/productivity.html:6
+#: templates/timepiece/reports/productivity.html:14
+msgid "Productivity Report"
+msgstr "Relatório de Produtividade"
+
+#: templates/timepiece/reports/productivity.html:36
+msgid "Submit"
+msgstr "Submeter"
+
+#: templates/timepiece/reports/productivity.html:37
+msgid "Export as CSV"
+msgstr "Exportar a CSV"
+
+#: templates/timepiece/reports/productivity.html:46
+#, python-format
+msgid "<span>Total Worked:</span> %(total_worked|floatformat:0)s hours"
+msgstr "<span>Total Trabalhado:</span> %(total_worked|floatformat:0)s horas"
+
+#: templates/timepiece/reports/productivity.html:47
+#, python-format
+msgid "<span>Total Assigned:</span> %(total_assigned|floatformat:0)s hours"
+msgstr "<span>Total Assignado:</span> %(total_assigned|floatformat:0)s horas"
+
+#: templates/timepiece/schedule/edit.html:6
+#: templates/timepiece/schedule/edit.html:38
+#: templates/timepiece/schedule/view.html:6
+#: templates/timepiece/schedule/view.html:22
+msgid "Schedule for the Week of"
+msgstr "Programação para a semana de"
+
+#: templates/timepiece/schedule/edit.html:55
+msgid "Copy previous week"
+msgstr "Copiar semana anterior"
+
+#: templates/timepiece/schedule/edit.html:60
+msgid "Publish hours"
+msgstr "Publicar horas"
+
+#: templates/timepiece/schedule/view.html:24
+msgid "Prev Week"
+msgstr "Semana Ant."
+
+#: templates/timepiece/schedule/view.html:25
+msgid "Next Week"
+msgstr "Prox. Semana"
+
+#: templates/timepiece/schedule/view.html:39
+msgid "Edit Schedule"
+msgstr "Editar Programação"
+
+#: templates/timepiece/schedule/view.html:71
+msgid "There are no entries this week."
+msgstr "Não há entradas esta semana."
+
+#: templates/timepiece/user/create_edit.html:7
+#: templates/timepiece/user/create_edit.html:15
+#: templates/timepiece/user/create_edit.html:25
+#: templates/timepiece/user/list.html:14
+msgid "Create User"
+msgstr "Criar usuário"
+
+#: templates/timepiece/user/list.html:38
+msgid "Username"
+msgstr "Usuario"
+
+#: templates/timepiece/user/list.html:39
+msgid "First Name"
+msgstr "Primeiro Nome"
+
+#: templates/timepiece/user/list.html:40
+msgid "Last Name"
+msgstr "Sobrenome"
+
+#: templates/timepiece/user/list.html:43 templates/timepiece/user/view.html:37
+msgid "Active"
+msgstr "Ativo"
+
+#: templates/timepiece/user/settings.html:6
+#: templates/timepiece/user/settings.html:10
+#: templates/timepiece/user/settings.html:16
+msgid "My Settings"
+msgstr "Minhas Configurações"
+
+#: templates/timepiece/user/timesheet/change.html:6
+#, python-format
+msgid "%(action.capitalize)s Hours for Time Sheet"
+msgstr "%(action.capitalize)s Horas para Folha Ponto"
+
+#: templates/timepiece/user/timesheet/change.html:16
+msgid "Hours for Time Sheet"
+msgstr "Horas para Folha Ponto"
+
+#: templates/timepiece/user/timesheet/change.html:18
+#, python-format
+msgid ""
+"Are you sure you want to %(action)s all of "
+"%(timesheet_user.get_name_or_username)s's time sheet,\n"
+"                from %(from_date|date:\"N j, Y\")s to "
+"%(to_date|date:\"N j, Y\")s, which includes a total of %(hours)s hours?"
+msgstr ""
+"Tem certeza que quer %(action)s toda a folha ponto de "
+"%(timesheet_user.get_name_or_username)s,\n"
+"                de %(from_date|date:\"N j, Y\")s a "
+"%(to_date|date:\"N j, Y\")s, que inclui um total de %(hours)s horas?"
+
+#: templates/timepiece/user/timesheet/change.html:22
+msgid ""
+"After entries have been approved they are ready to be submitted for payroll."
+msgstr ""
+"Após entradas serem aprovadas, elas estarão prontas para submeter para folha "
+"de pagamento."
+
+#: templates/timepiece/user/timesheet/change.html:24
+msgid "After entries are verified they cannot be changed."
+msgstr "Após entradas serem confirmadas, elas não podem ser alteradas."
+
+#: templates/timepiece/user/timesheet/reject.html:4
+msgid "Reject Entries"
+msgstr "Rejeitar Entradas"
+
+#: templates/timepiece/user/timesheet/reject.html:9
+#, python-format
+msgid "Reject Entries for %(date|date:'M j')s"
+msgstr "Rejeitar Entradas para %(date|date:'M j')s"
+
+#: templates/timepiece/user/timesheet/reject.html:13
+#, python-format
+msgid ""
+"Are you sure you want to reject %(timesheet_user.first_name)s's entries for "
+"%(date|date:'M j')s?"
+msgstr ""
+"Tem certeza que quer rejeitar as entradas de %(timesheet_user.first_name)s "
+"para %(date|date:'M j')s?"

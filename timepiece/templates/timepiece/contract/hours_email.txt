@@ -1,10 +1,11 @@
-{% autoescape off %}{% if new %}New contract hour record with pending hours created.
-{% elif deleted %}Contract hour record with pending hours has been deleted.
-{% else %}Contract hour record with pending hours has been changed.
+{% load i18n %}
+{% autoescape off %}{% if new %}{% trans "New contract hour record with pending hours created" %}.
+{% elif deleted %}{% trans "Contract hour record with pending hours has been deleted" %}.
+{% else %}{% trans "Contract hour record with pending hours has been changed" %}.
 {% endif %}{% if deleted or changed %}
-Previously:
+{% trans "Previously" %}:
 {% with hours=previous %}{% include 'timepiece/contract/contract_hour.txt' %}{% endwith %}
 {% endif %}{% if not deleted %}
-Now:
+{% trans "Now" %}:
 {% with hours=current %}{% include 'timepiece/contract/contract_hour.txt' %}{% endwith %}{% endif %}
-View contract at {{ link }}{% endautoescape %}
+{% trans "View contract at" %} {{ link }}{% endautoescape %}

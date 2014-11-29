@@ -1,25 +1,26 @@
 {% extends "timepiece/project/base.html" %}
 {% load url from future %}
 {% load bootstrap_toolkit %}
+{% load i18n %}
 
 {% block crumbs %}
     {{ block.super }}
     <li>
         <span class="divider">/</span>
         {% if not object %}
-            <a href="{% url 'create_project' %}">Create Project</a>
+            <a href="{% url 'create_project' %}">{% trans "Create Project" %}</a>
         {% else %}
-            <a href="{% url 'edit_project' object.pk %}">Edit Project</a>
+            <a href="{% url 'edit_project' object.pk %}">{% trans "Edit Project" %}</a>
         {% endif %}
     </li>
 {% endblock crumbs %}
 
-{% block title %}{% if not object %}Create Project{% else %}Edit {{ object }}{% endif %}{% endblock title %}
+{% block title %}{% if not object %}{% trans "Create Project" %}{% else %}{% trans "Edit" %} {{ object }}{% endif %}{% endblock title %}
 
 {% block content %}
     <div class="row-fluid">
         <div class="span12">
-            <h2>{% if not object %}Create Project{% if business %} for {{ business }}{% endif %}{% else %}Edit {{ object }}{% endif %}</h2>
+            <h2>{% if not object %}{% trans "Create Project" %}{% if business %} {% trans "for" %} {{ business }}{% endif %}{% else %}{% trans "Edit" %} {{ object }}{% endif %}</h2>
 
             <br style="clear: both;" />
 
@@ -27,8 +28,8 @@
                 {% csrf_token %}
                 {{ form|as_bootstrap:"horizontal" }}
                 <div class="form-actions">
-                    <input class="btn btn-primary" type='submit' name='submit' value='Save' />
-                    <input class="btn" type='button' value='Cancel' onclick='history.go(-1)' />
+                    <input class="btn btn-primary" type='submit' name='submit' value='{% trans "Save" %}' />
+                    <input class="btn" type='button' value='{% trans "Cancel" %}' onclick='history.go(-1)' />
                 </div>
             </form>
         </div>

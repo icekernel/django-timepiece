@@ -1,12 +1,13 @@
 {% extends 'timepiece/invoice/base.html' %}
 {% load timepiece_tags %}
 {% load url from future %}
+{% load i18n %}
 
-{% block title %}Edit Invoice{% endblock title %}
+{% block title %}{% trans "Edit Invoice" %}{% endblock title %}
 
 {% block crumbs %}
     {{ block.super }}
-    <li><span class="divider">/</span> <a href="{% url 'edit_invoice' invoice.pk %}">Edit Invoice</a></li>
+    <li><span class="divider">/</span> <a href="{% url 'edit_invoice' invoice.pk %}">{% trans "Edit Invoice" %}</a></li>
 {% endblock crumbs %}
 
 {% block content %}
@@ -20,8 +21,8 @@
         <div class="span12">
             <form class="form-horizontal" method="post">{% csrf_token %}
                 {{ invoice_form.as_p }}
-                <input class="btn" type="submit" name="submit" value="Update Invoice" />
-                <a class="btn btn-danger" href="{% url 'delete_invoice' invoice.pk %}">Delete Invoice</a>
+                <input class="btn" type="submit" name="submit" value="{% trans "Update Invoice" %}" />
+                <a class="btn btn-danger" href="{% url 'delete_invoice' invoice.pk %}">{% trans "Delete Invoice" %}</a>
             </form>
         </div>
     </div>
@@ -29,20 +30,20 @@
     <div class="row-fluid">
         <div class="span12">
             {% if billable_entries %}
-                <h3>Selected Billable Entries</h3>
+                <h3>{% trans "Selected Billable Entries" %}</h3>
                 {% with entries=billable_entries %}
                     {% include 'timepiece/invoice/_edit_entry_list.html' %}
                 {% endwith %}
             {% else %}
-                <p>No billable entries were found.</p>
+                <p>{% trans "No billable entries were found." %}</p>
             {% endif %}
             {% if nonbillable_entries %}
-                <h3>Selected Non-billable Entries</h3>
+                <h3>{% trans "Selected Non-billable Entries" %}</h3>
                 {% with entries=nonbillable_entries %}
                     {% include 'timepiece/invoice/_edit_entry_list.html' %}
                 {% endwith %}
             {% else %}
-                <p>No non-billable entries were found.</p>
+                <p>{% trans "No non-billable entries were found." %}</p>
             {% endif %}
         </div>
     </div>

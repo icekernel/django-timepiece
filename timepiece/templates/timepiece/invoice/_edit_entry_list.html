@@ -1,20 +1,21 @@
 {% load timepiece_tags %}
 {% load url from future %}
+{% load i18n %}
 <table class="table table-bordered table-condensed">
     <tr>
-        <th>Date</th>
-        <th>User</th>
-        <th>Time</th>
-        <th>Project</th>
-        <th>Activity</th>
-        <th>Hours</th>
-        <th>Comments</th>
-        <th>Remove</th>
+        <th>{% trans "Date" %}</th>
+        <th>{% trans "User" %}</th>
+        <th>{% trans "Time" %}</th>
+        <th>{% trans "Project" %}</th>
+        <th>{% trans "Activity" %}</th>
+        <th>{% trans "Hours" %}</th>
+        <th>{% trans "Comments" %}</th>
+        <th>{% trans "Remove" %}</th>
     </tr>
     {% for entry in entries %}
         {% ifchanged entry.start_time|date:"W" %}
             <tr class="ledger_header">
-                <th colspan='8'>Week of {{ entry.start_time|week_start|date }} </th>
+              <th colspan='8'>{% blocktrans %}Week of {{ entry.start_time|week_start|date }}{% endblocktrans %} </th>
             </tr>
         {% endifchanged %}
         <tr>
@@ -29,7 +30,7 @@
             <td>{{ entry.activity.name }}</td>
             <td class="hours">{{ entry.hours }}</td>
             <td title="{{entry.comments}}">{{ entry.comments|truncatewords:12 }}</td>
-            <td><a href="{% url 'delete_invoice_entry' invoice.pk entry.pk %}">Remove</a></td>
+            <td><a href="{% url 'delete_invoice_entry' invoice.pk entry.pk %}">{% trans "Remove" %}</a></td>
         </tr>
     {% endfor %}
 </table>

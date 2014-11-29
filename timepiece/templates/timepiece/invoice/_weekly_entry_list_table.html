@@ -1,21 +1,22 @@
 {% load timepiece_tags %}
+{% load i18n %}
 <table class="table table-bordered table-condensed table-striped">
     <thead>
     <tr>
-        <th>Date</th>
-        <th>User</th>
-        <th>Time</th>
-        <th>Project</th>
-        <th>Activity</th>
-        <th>Hours</th>
-        <th>Comments</th>
+        <th>{% trans "Date" %}</th>
+        <th>{% trans "User" %}</th>
+        <th>{% trans "Time" %}</th>
+        <th>{% trans "Project" %}</th>
+        <th>{% trans "Activity" %}</th>
+        <th>{% trans "Hours" %}</th>
+        <th>{% trans "Comments" %}</th>
     </tr>
     </thead>
     <tbody>
     {% for entry in entries %}
         {% ifchanged entry.start_time|date:"W" %}
             <tr class="ledger_header">
-                <th colspan='7'>Week of {{ entry.start_time|week_start|date }} </th>
+                <th colspan='7'>{% trans "Week of" %} {{ entry.start_time|week_start|date }} </th>
             </tr>
         {% endifchanged %}
         <tr>

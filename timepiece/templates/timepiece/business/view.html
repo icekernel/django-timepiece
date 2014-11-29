@@ -1,6 +1,7 @@
 {% extends "timepiece/business/base.html" %}
 {% load timepiece_tags %}
 {% load url from future %}
+{% load i18n %}
 
 {% block title %}{{ object.name }}{% endblock title %}
 
@@ -18,8 +19,8 @@
             <h2>{{ object.name }}</h2>
             <ul class="nav nav-pills">
                 {% if perms.crm.change_business %}
-                    <li><a href='{% url 'edit_business' object.pk %}'>Edit</a></li>
-                    <li><a href="{% url 'delete_business' object.pk %}">Delete</a></li>
+                    <li><a href='{% url 'edit_business' object.pk %}'>{% trans "Edit" %}</a></li>
+                    <li><a href="{% url 'delete_business' object.pk %}">{% trans "Delete" %}</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -28,10 +29,10 @@
     <div class="row-fluid">
         <div class="span6">
             <table class="table table-bordered">
-                <tr><th>Short name:</th><td>{{ object.short_name }}</td></tr>
-                <tr><th>Email:</th><td>{{ object.email }}</td></tr>
-                <tr><th>Description:</th><td>{{ object.description|linebreaks }}</td></tr>
-                <tr><th>Notes:</th><td>{{ object.notes|linebreaks }}</td></tr>
+                <tr><th>{% trans "Short name" %}:</th><td>{{ object.short_name }}</td></tr>
+                <tr><th>{% trans "Email" %}:</th><td>{{ object.email }}</td></tr>
+                <tr><th>{% trans "Description" %}:</th><td>{{ object.description|linebreaks }}</td></tr>
+                <tr><th>{% trans "Notes" %}:</th><td>{{ object.notes|linebreaks }}</td></tr>
             </table>
         </div>
     </div>

@@ -1,6 +1,7 @@
 {% extends 'timepiece/contract/base.html' %}
 {% load timepiece_tags %}
 {% load url from future %}
+{% load i18n %}
 
 {% block title %}{{ contract }}{% endblock title %}
 {% block bodyid %}contracts{% endblock bodyid %}
@@ -16,7 +17,7 @@
             <h2>{{ contract }}</h2>
             <ul class="nav nav-pills">
                 {% if perms.contracts.change_contract %}  {# FIXME: permission doesn't exist #}
-                    <li><a href="{{ contract.get_admin_url }}">Edit</a></li>
+                    <li><a href="{{ contract.get_admin_url }}">{% trans "Edit" %}</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -24,18 +25,18 @@
 
     <div class="row-fluid">
         <div class="span4">
-            <h3>Contract Info</h3>
+            <h3>{% trans "Contract Info" %}</h3>
             <table class="table table-bordered">
-                <tr><th>Status</th><td>{{ contract.get_status_display }}</td></tr>
-                <tr><th>Start Date</th><td>{{ contract.start_date|date:'M j, Y' }}</td></tr>
+                <tr><th>{% trans "Status" %}</th><td>{{ contract.get_status_display }}</td></tr>
+                <tr><th>{% trans "Start Date" %}</th><td>{{ contract.start_date|date:'M j, Y' }}</td></tr>
                 {% if contract.end_date < today %}
-                    <tr class="expired" title="This contract has expired.">
+                    <tr class="expired" title="{% trans "This contract has expired." %}">
                 {% elif contract.end_date < warning_date %}
-                    <tr class="expiring-soon" title="This contract will expire in less than two weeks.">
+                    <tr class="expiring-soon" title="{% trans "This contract will expire in less than two weeks." %}">
                 {% else %}
                     <tr>
                 {% endif %}
-                    <th>End Date</th>
+                    <th>{% trans "End Date" %}</th>
                     <td{% if contract.end_date < today %} class="past"{% endif %}>
                         {{ contract.end_date|date:'M j, Y' }}
                         {% if contract.end_date >= today and contract.end_date < warning_date %}
@@ -43,7 +44,7 @@
                         {% endif %}
                     </td>
                 </tr>
-                <tr><th>Contract Hours</th>
+                <tr><th>{% trans "Contract Hours" %}</th>
                     <td>
                         {{ contract.contracted_hours|floatformat:2 }}
                         {% if contract.pending_hours %}
@@ -51,30 +52,30 @@
                         {%  endif %}</td>
                     </td>
                 </tr>
-                <tr><th>Hours Worked (billable)</th>
+                <tr><th>{% trans "Hours Worked (billable)" %}</th>
                     <td>
                         {{ contract.hours_worked|floatformat:2 }}
                         ({% widthratio contract.hours_worked contract.contracted_hours 100 %}%)
                     </td>
                 </tr>
-                <tr><th>Hours Remaining</th><td>{{ contract.hours_remaining|floatformat:2 }}</td></tr>
-                <tr><th>Type</th><td>{{  contract.get_type_display }}</td></tr>
+                <tr><th>{% trans "Hours Remaining" %}</th><td>{{ contract.hours_remaining|floatformat:2 }}</td></tr>
+                <tr><th>{% trans "Type" %}</th><td>{{  contract.get_type_display }}</td></tr>
             </table>
         </div>
         <div class="span7 offset1">
-            <h3>Projects</h3>
+            <h3>{% trans "Projects" %}</h3>
             {% if contract.projects.exists %}
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th rowspan="2">Name</th>
-                        <th colspan="2">Hours Worked</th>
-                        <th rowspan="2">Time Sheet</th>
-                        <th rowspan="2">Hours Report</th>
+                        <th rowspan="2">{% trans "Name" %}</th>
+                        <th colspan="2">{% trans "Hours Worked" %}</th>
+                        <th rowspan="2">{% trans "Time Sheet" %}</th>
+                        <th rowspan="2">{% trans "Hours Report" %}</th>
                     </tr>
                     <tr>
-                        <th>Billable</th>
-                        <th>Non-billable</th>
+                        <th>{% trans "Billable" %}</th>
+                        <th>{% trans "Non-billable" %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -92,21 +93,21 @@
                     </tbody>
                 </table>
             {% else %}
-                <p>This contract is not associated with any projects.</p>
+                <p>{% trans "This contract is not associated with any projects." %}</p>
             {% endif %}
         </div>
     </div>
 
     <div class="row-fluid">
         <div class="span12">
-            <h3>Contract Hours</h3>
+            <h3>{% trans "Contract Hours" %}</h3>
             <table class='table table-bordered'>
                 <tr>
-                    <th>Date Requested</th>
-                    <th>Hours</th>
-                    <th>Status</th>
-                    <th>Date Approved</th>
-                    <th>Notes</th>
+                    <th>{% trans "Date Requested" %}</th>
+                    <th>{% trans "Hours" %}</th>
+                    <th>{% trans "Status" %}</th>
+                    <th>{% trans "Date Approved" %}</th>
+                    <th>{% trans "Notes" %}</th>
                 </tr>
                 {% for hour in contract.contract_hours.all %}
                     <tr>

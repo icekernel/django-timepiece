@@ -1,17 +1,18 @@
 {% extends "timepiece/business/base.html" %}
 {% load bootstrap_toolkit %}
 {% load url from future %}
+{% load i18n %}
 
-{% block title %}{% if not object %}Create Business{% else %}Edit {{ object }}{% endif %}{% endblock title %}
+{% block title %}{% if not object %}{% trans "Create Business" %}{% else %}{% trans "Edit" %} {{ object }}{% endif %}{% endblock title %}
 
 {% block crumbs %}
     {{ block.super }}
     <li>
         <span class="divider">/</span>
         {% if not object %}
-            <a href="{% url 'create_business' %}">Create Business</a>
+            <a href="{% url 'create_business' %}">{% trans "Create Business" %}</a>
         {% else %}
-            <a href="{% url 'edit_business' object.pk %}">Edit Business</a>
+            <a href="{% url 'edit_business' object.pk %}">{% trans "Edit Business" %}</a>
         {% endif %}
     </li>
 {% endblock crumbs %}
@@ -19,7 +20,7 @@
 {% block content %}
     <div class="row-fluid">
         <div class="span12">
-            <h2>{% if not object %}Create Business{% else %}Edit {{ object.name }}{% endif %}</h2>
+            <h2>{% if not object %}{% trans "Create Business" %}{% else %}{% trans "Edit" %} {{ object.name }}{% endif %}</h2>
 
             <br style="clear: both;" />
 

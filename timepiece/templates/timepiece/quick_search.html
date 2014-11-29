@@ -1,7 +1,8 @@
 {% extends "timepiece/base.html" %}
 {% load url from future %}
+{% load i18n %}
 
-{% block title %}Search Results{% endblock title %}
+{% block title %}{% trans "Search Results" %}{% endblock title %}
 
 {% block content %}
     {% if form.errors %}
@@ -15,6 +16,6 @@
     <form class="form-inline" method="post" action="{% url 'quick_search' %}">
         {% csrf_token %}
         {{ form.quick_search }}
-        <button class="btn">Search</button>
+        <button class="btn">{% trans "Search" %}</button>
     </form>
 {% endblock content %}

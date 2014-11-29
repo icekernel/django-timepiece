@@ -1,38 +1,39 @@
 {% load timepiece_tags %}
 {% load url from future %}
+{% load i18n %}
 
 <table class='table table-bordered'>
     {% if invoice.number %}
         <tr>
-            <th>Number:</th>
+            <th>{% trans "Number" %}:</th>
             <td>{{ invoice.number }}</td>
         </tr>
     {% endif %}
     <tr>
-        <th>Project:</th>
+        <th>{% trans "Project" %}:</th>
         <td>{{ invoice.project.name }}</td>
     </tr>
     <tr>
-        <th>Status:</th>
+        <th>{% trans "Status" %}:</th>
         <td>{{ invoice.get_status_display }}</td>
     </tr>
     <tr>
-        <th>Created by:</th>
+        <th>{% trans "Created by" %}:</th>
         <td>{{ invoice.user.get_name_or_username }}</td>
     </tr>
     <tr>
-        <th>Created on:</th>
+        <th>{% trans "Created on" %}:</th>
         <td>{{ invoice.created|date:'M j, Y P' }}</td>
     </tr>
     <tr>
-        <th>Last modified:</th>
+        <th>{% trans "Last modified" %}:</th>
         <td>{{ invoice.modified|date:'M j, Y P' }}</td>
     </tr>
 
     {% if invoice.start %}
         <tr>
-            <th>Starting on:</th>
-            <td>{{ invoice.start|date|default:"Not specified" }}</td>
+            <th>{% trans "Starting on" %}:</th>
+            <td>{{ invoice.start|date|default:_("Not specified") }}</td>
         </tr>
     {% endif %}
     <tr>
@@ -41,7 +42,7 @@
     </tr>
     {% if invoice.comments %}
         <tr>
-            <th>Comments:</th>
+            <th>{% trans "Comments" %}:</th>
             <td>{{ invoice.comments }}</td>
         </tr>
     {% endif %}

@@ -2,25 +2,26 @@
 {% load timepiece_tags %}
 {% load bootstrap_toolkit %}
 {% load url from future %}
+{% load i18n %}
 
-{% block title %}Outstanding Hours{% endblock title %}
+{% block title %}{% trans "Outstanding Hours" %}{% endblock title %}
 
 {% block crumbs %}
     {{ block.super }}
-    <li><span class="divider">/</span> <a href="">Outstanding Hours</a></li>
+    <li><span class="divider">/</span> <a href="">{% trans "Outstanding Hours" %}</a></li>
 {% endblock crumbs %}
 
 {% block content %}
     <div class="row-fluid">
         <div class="span12">
-            <h2>Outstanding Hours</h2>
+            <h2>{% trans "Outstanding Hours" %}</h2>
             <ul class="nav nav-pills">
                 <li>
-                    <span>Outstanding Hours</span>
+                    <span>{% trans "Outstanding Hours" %}</span>
                 </li>
                 {% if perms.contracts.view_entry_group %}  {# FIXME: Permission doesn't exist #}
                     <li>
-                        <a href="{% url 'list_invoices' %}">Previous Invoices</a>
+                        <a href="{% url 'list_invoices' %}">{% trans "Previous Invoices" %}</a>
                     </li>
                 {% endif %}
             </ul>
@@ -39,7 +40,7 @@
                 {{ date_form|as_bootstrap:"horizontal" }}
                 <div class="control-group">
                     <div class="controls">
-                        <input class="btn btn-primary" type='submit' name='yearmonth' value="Update" id='yearmonth'/>
+                        <input class="btn btn-primary" type='submit' name='yearmonth' value="{% trans "Update" %}" id='yearmonth'/>
                     </div>
                 </div>
             </form>
@@ -50,7 +51,7 @@
         <div class="span6">
             {% if unverified %}
                 <i class="icon-warning-sign"></i>
-                <p><strong>Warning:</strong> The following users have <strong>unverified</strong> time during this period:</p>
+                <p>{% blocktrans %}<strong>Warning:</strong> The following users have <strong>unverified</strong> time during this period:{% endblocktrans %}</p>
                 <ul>
                     {% for pk, first, last in unverified %}
                         <li>
@@ -61,7 +62,7 @@
             {% endif %}
             {% if unapproved %}
                 <i class="icon-warning-sign"></i>
-                <p><strong>Warning:</strong> The following users have <strong>unapproved</strong> time during this period:</p>
+                <p>{% blocktrans %}<strong>Warning:</strong> The following users have <strong>unapproved</strong> time during this period:{% endblocktrans %}</p>
                 <ul>
                     {% for pk, first, last in unapproved %}
                         <li>
@@ -71,7 +72,7 @@
                 </ul>
             {% endif %}
             {% if not unverified and not unapproved %}
-                <p>All time verified and approved</p>
+                <p>{% trans "All time verified and approved" %}</p>
             {% endif %}
         </div>
     </div>
@@ -82,21 +83,21 @@
             {# For each table, order by project status, then business display name, then project name. #}
             {% regroup project_totals by project.type.label as type_list %}
             {% for type in type_list %}
-                <h3>Summary of {{ type.grouper }} Entries</h3>
+                <h3>{% blocktrans %}Summary of {{ type.grouper }} Entries{% endblocktrans %}</h3>
 
                 <table class="table table-bordered table-condensed table-striped">
                     <thead>
                         <tr>
-                            <th rowspan="2">Project</th>
-                            <th rowspan="2">Active Contracts</th>
-                            <th rowspan="2">Business</th>
-                            <th rowspan="2">Status</th>
-                            <th colspan="2">Uninvoiced Hours</th>
+                            <th rowspan="2">{% trans "Project" %}</th>
+                            <th rowspan="2">{% trans "Active Contracts" %}</th>
+                            <th rowspan="2">{% trans "Business" %}</th>
+                            <th rowspan="2">{% trans "Status" %}</th>
+                            <th colspan="2">{% trans "Uninvoiced Hours" %}</th>
                             <th rowspan="2"></th>
                         </tr>
                         <tr>
-                            <th>Billable</th>
-                            <th>Non-billable</th>
+                            <th>{% trans "Billable" %}</th>
+                            <th>{% trans "Non-billable" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -118,9 +119,9 @@
                                 <td class="hours">{% get_uninvoiced_hours project.list 'nonbillable' %}</td>
                                 <td>
                                     {% if from_date %}
-                                        <a href="{% url 'create_invoice' %}?project= {{ project.list.0.project.pk }}&to_date={{ to_date|date:'Y-m-d' }}&from_date={{ from_date|date:'Y-m-d' }}">Make Invoice</a>
+                                        <a href="{% url 'create_invoice' %}?project= {{ project.list.0.project.pk }}&to_date={{ to_date|date:'Y-m-d' }}&from_date={{ from_date|date:'Y-m-d' }}">{% trans "Make Invoice" %}</a>
                                     {% else %}
-                                        <a href="{% url 'create_invoice' %}?project={{ project.list.0.project.pk }}&to_date={{ to_date|date:'Y-m-d' }}">Make Invoice</a>
+                                        <a href="{% url 'create_invoice' %}?project={{ project.list.0.project.pk }}&to_date={{ to_date|date:'Y-m-d' }}">{% trans "Make Invoice" %}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -128,7 +129,7 @@
                     </tbody>
                 </table>
             {% empty %}
-                <p>There are no outstanding hours which match your filter criteria.</p>
+                <p>{% trans "There are no outstanding hours which match your filter criteria." %}</p>
             {% endfor %}
         </div>
     </div>

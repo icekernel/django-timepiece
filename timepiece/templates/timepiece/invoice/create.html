@@ -1,18 +1,19 @@
 {% extends 'timepiece/invoice/base.html' %}
 {% load timepiece_tags bootstrap_toolkit %}
 {% load url from future %}
+{% load i18n %}
 
-{% block title %}Invoice Hours for Time Sheet{% endblock title %}
+{% block title %}{% trans "Invoice Hours for Time Sheet" %}{% endblock title %}
 
 {% block crumbs %}
     {{ block.super }}
-    <li><span class="divider">/</span> <a href="{% url 'create_invoice' %}?project={{ project.pk }}&to_date={{ to_date|date:'Y-m-d' }}">Confirm Invoice</a></li>
+    <li><span class="divider">/</span> <a href="{% url 'create_invoice' %}?project={{ project.pk }}&to_date={{ to_date|date:'Y-m-d' }}">{% trans "Confirm Invoice" %}</a></li>
 {% endblock crumbs %}
 
 {% block content %}
     <div class="row-fluid">
         <div class="span12">
-            <h2>Invoice {{ project.name }} Hours {% if from_date %}from {{ from_date.date|date:'M j, Y' }} to {{ to_date.date|date:'M j, Y' }}{% else %}through {{ to_date.date|date:'M j, Y' }}{% endif %}</h2>
+            <h2>{% blocktrans %}Invoice {{ project.name }} Hours {% endblocktrans %}{% if from_date %}{% blocktrans %}from {{ from_date.date|date:'M j, Y' }} to {{ to_date.date|date:'M j, Y' }}{% endblocktrans %}{% else %}{% blocktrans %}through {{ to_date.date|date:'M j, Y' }}{% endblocktrans %}{% endif %}</h2>
         </div>
     </div>
 
@@ -21,17 +22,17 @@
             <form class="form-horizontal" method="post">
                 {% csrf_token %}
                 {{ invoice_form|as_bootstrap:"horizontal" }}
-                <input class="btn btn-primary" type='submit' name='submit' value='Create Invoice' />
-                <input class="btn" type='button' value='Cancel' onclick='history.go(-1)' />
+                <input class="btn btn-primary" type='submit' name='submit' value='{% trans "Create Invoice" %}' />
+                <input class="btn" type='button' value='{% trans "Cancel" %}' onclick='history.go(-1)' />
             </form>
         </div>
 
         <div class="span4">
-            <h3>Billable Totals</h3>
+            <h3>{% trans "Billable Totals" %}</h3>
             <table class="table table-bordered">
                 <tr>
-                    <th>Activity Type</th>
-                    <th>Total Hours</th>
+                    <th>{% trans "Activity Type" %}</th>
+                    <th>{% trans "Total Hours" %}</th>
                 </tr>
                 {% for name, hours_activities in billable_totals %}
                     <tr class="ledger_header">
@@ -46,11 +47,11 @@
                     {% endfor %}
                 {% endfor %}
             </table>
-            <h3>Non-billable Totals</h3>
+            <h3>{% trans "Non-billable Totals" %}</h3>
             <table class="table table-bordered">
                 <tr>
-                    <th>Activity Type</th>
-                    <th>Total Hours</th>
+                    <th>{% trans "Activity Type" %}</th>
+                    <th>{% trans "Total Hours" %}</th>
                 </tr>
                 {% for name, hours_activities in nonbillable_totals %}
                     <tr class="ledger_header">
@@ -70,7 +71,7 @@
 
     <div class="row-fluid">
         <div class="span12">
-            <h3>Selected Entries</h3>
+            <h3>{% trans "Selected Entries" %}</h3>
             {% include 'timepiece/invoice/_weekly_entry_list.html' %}
         </div>
     </div>

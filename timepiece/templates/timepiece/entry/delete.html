@@ -1,27 +1,28 @@
 {% extends 'timepiece/base.html' %}
 {% load url from future %}
+{% load i18n %}
 
-{% block title %}Delete Entry{% endblock title %}
+{% block title %}{% trans "Delete Entry" %}{% endblock title %}
 
 {% block crumbs %}
     {{ block.super }}
-    <li><span class="divider">/</span> <a href="{% url 'delete_entry' entry.pk %}">Delete Entry</a></li>
+    <li><span class="divider">/</span> <a href="{% url 'delete_entry' entry.pk %}">{% trans "Delete Entry" %}</a></li>
 {% endblock crumbs %}
 
 {% block content %}
     <div class="row-fluid">
         <div class="span12">
-            <h2>Delete Entry</h2>
+            <h2>{% trans "Delete Entry" %}</h2>
 
             <br style="clear: both;" />
 
             <form class="form-inline" action="" method="post">
                 {% csrf_token %}
-                <h3>Are you sure you want to delete this entry?</h3>
+                <h3>{% trans "Are you sure you want to delete this entry?" %}</h3>
                 <input type="hidden" name="key" value="{{ entry.delete_key }}" />
                 <div class="form-actions">
-                    <input class="btn btn-primary" type="submit" value="Yes" />
-                    <input class="btn" type="button" value="No" onclick="history.back()" />
+                    <input class="btn btn-primary" type="submit" value="{% trans "Yes" %}" />
+                    <input class="btn" type="button" value="{% trans "No" %}" onclick="history.back()" />
                 </div>
             </form>
         </div>

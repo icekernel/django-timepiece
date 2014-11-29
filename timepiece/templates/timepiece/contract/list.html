@@ -1,8 +1,9 @@
 {% extends 'timepiece/contract/base.html' %}
 {% load timepiece_tags %}
 {% load url from future %}
+{% load i18n %}
 
-{% block title %}Current Contracts{% endblock title %}
+{% block title %}{% trans "Current Contracts" %}{% endblock title %}
 {% block bodyid %}contracts{% endblock bodyid %}
 
 {% block extrajs %}
@@ -16,29 +17,29 @@
 {% block content %}
     <div class="row-fluid">
         <div class="span12">
-            <h2 class="page-title">Current Contracts</h2>
+            <h2 class="page-title">{% trans "Current Contracts" %}</h2>
             <table class="table table-bordered table-striped table-condensed contracts">
                 <thead>
                     <tr>
-                        <th rowspan="2">Name</th>
-                        <th rowspan="2">Start Date</th>
-                        <th rowspan="2">End Date</th>
-                        <th rowspan="2">Contract Hours</th>
-                        <th colspan="2">Hours Worked</th>
-                        <th rowspan="2" class="hidden-phone">Progress: days elapsed/hours worked</th>
-                        <th rowspan="2">Contract Type</th>
+                        <th rowspan="2">{% trans "Name" %}</th>
+                        <th rowspan="2">{% trans "Start Date" %}</th>
+                        <th rowspan="2">{% trans "End Date" %}</th>
+                        <th rowspan="2">{% trans "Contract Hours" %}</th>
+                        <th colspan="2">{% trans "Hours Worked" %}</th>
+                        <th rowspan="2" class="hidden-phone">{% trans "Progress: days elapsed/hours worked" %}</th>
+                        <th rowspan="2">{% trans "Contract Type" %}</th>
                     </tr>
                     <tr>
-                        <th>Billable</th>
-                        <th>Non-billable</th>
+                        <th>{% trans "Billable" %}</th>
+                        <th>{% trans "Non-billable" %}</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for contract in contracts %}
                         {% if contract.end_date < today %}
-                            <tr class="expired" title="This contract has expired.">
+                            <tr class="expired" title="{% trans "This contract has expired." %}">
                         {% elif contract.end_date < warning_date %}
-                            <tr class="expiring-soon" title="This contract will expire in less than 2 weeks.">
+                            <tr class="expiring-soon" title="{% trans "This contract will expire in less than 2 weeks." %}">
                         {% else %}
                             <tr>
                         {% endif %}

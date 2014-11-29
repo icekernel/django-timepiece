@@ -1,13 +1,14 @@
 {% extends 'timepiece/base.html' %}
 {% load timepiece_tags bootstrap_toolkit %}
 {% load url from future %}
+{% load i18n %}
 
 {% block crumbs %}
     {{ block.super }}
-    <li><span class="divider">/</span> <a href="{% url 'clock_in' %}">Clock In</a></li>
+    <li><span class="divider">/</span> <a href="{% url 'clock_in' %}">{% trans "Clock In" %}</a></li>
 {% endblock crumbs %}
 
-{% block title %}Clock In{% endblock title %}
+{% block title %}{% trans "Clock In" %}{% endblock title %}
 
 {% block extrajs %}
     <script charset="utf-8" src="{{ STATIC_URL }}timepiece/js/prevent_double_click.js"></script>
@@ -16,15 +17,15 @@
 {% block content %}
     <div class="row-fluid">
         <div class="span12">
-            <h2>Clock Into Project</h2>
+            <h2>{% trans "Clock Into Project" %}</h2>
 
             <br style="clear: both;" />
 
             {% if active %}
                 <div class="alert">
                     <button type="button" class="close" data-dismiss="alert">x</button>
-                    <h4 class="alert-heading">Switching Projects</h4>
-                    <p>You are currently clocked into {{active.activity.name }} for {{ active.project }} with {{ active.get_total_seconds|humanize_seconds }} time clocked. Switching to a new project below will clock out of this entry and start a new one. Please enter any notes about switching below.</p>
+                    <h4 class="alert-heading">{% trans "Switching Projects" %}</h4>
+                    <p>{% blocktrans %}You are currently clocked into {{active.activity.name }} for {{ active.project }} with {{ active.get_total_seconds|humanize_seconds }} time clocked. Switching to a new project below will clock out of this entry and start a new one. Please enter any notes about switching below.{% endblocktrans %}</p>
                 </div>
             {% endif %}
 
@@ -34,7 +35,7 @@
                 {{ form|as_bootstrap:"horizontal" }}
                 <div class="form-actions">
                     <input class="btn btn-primary" type="submit" name="submit" value="Clock In" />
-                    <input class="btn cancel" type="button" value="Cancel" onclick="history.back()" />
+                    <input class="btn cancel" type="button" value="{% trans "Cancel" %}" onclick="history.back()" />
                 </div>
             </form>
         </div>

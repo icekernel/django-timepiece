@@ -1,6 +1,7 @@
 {% extends "timepiece/project/base.html" %}
 {% load url from future %}
 {% load timepiece_tags bootstrap_toolkit %}
+{% load i18n %}
 
 {% block title %}{{ object }}{% endblock title %}
 
@@ -15,11 +16,11 @@
             <h2>{{ object }}</h2>
             <ul class="nav nav-pills">
                 {% if perms.crm.change_project %}
-                    <li><a href="{% url 'edit_project' object.id %}">Edit</a></li>
-                    <li><a href="{% url 'delete_project' object.id %}">Delete</a></li>
+                    <li><a href="{% url 'edit_project' object.id %}">{% trans "Edit" %}</a></li>
+                    <li><a href="{% url 'delete_project' object.id %}">{% trans "Delete" %}</a></li>
                 {% endif %}
                 {% if perms.crm.view_project_time_sheet %}
-                    <li><a href="{% url 'view_project_timesheet' object.id %}">View Time Sheet</a></li>
+                    <li><a href="{% url 'view_project_timesheet' object.id %}">{% trans "View Time Sheet" %}</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -30,7 +31,7 @@
             <table class="table table-bordered">
                 <tr><th>Type</th><td>{{ object.type }}</td></tr>
                 <tr>
-                    <th>Business</th>
+                    <th>{% trans "Business" %}</th>
                     <td>
                         {% if perms.crm.view_business  %}
                             <a href="{% url 'view_business' object.business.pk %}">{{ object.business }}</a>
@@ -39,10 +40,10 @@
                         {% endif %}
                     </td>
                 </tr>
-                <tr><th>Status</th><td>{{ object.status }}</td></tr>
-                <tr><th>Billable</th><td>{{ object.billable }}</td></tr>
+                <tr><th>{% trans "Status" %}</th><td>{{ object.status }}</td></tr>
+                <tr><th>{% trans "Billable" %}</th><td>{{ object.billable }}</td></tr>
                 <tr>
-                    <th>Point Person</th>
+                    <th>{% trans "Point Person" %}</th>
                     <td>
                         {% if perms.auth.view_user %}
                             <a href="{% url 'view_user' object.point_person.pk %}">{{ object.point_person.get_name_or_username }}</a>
@@ -51,19 +52,19 @@
                         {% endif %}
                     </td>
                 </tr>
-                <tr><th>Description</th><td>{{ object.description|linebreaks }}</td></tr>
+                <tr><th>{% trans "Description" %}</th><td>{{ object.description|linebreaks }}</td></tr>
                 {% if object.tracker_url %}
-                    <tr><th>Tracker URL</th><td>{{ object.tracker_url }}</td></tr>
+                    <tr><th>{% trans "Tracker URL" %}</th><td>{{ object.tracker_url }}</td></tr>
                 {% endif %}
                 <tr>
-                    <th>Contracts</th>
+                    <th>{% trans "Contracts" %}</th>
                     <td>
                         {% for contract in object.contracts.all %}
                             <a href="{% url 'view_contract' contract.pk %}">{{ contract }}</a>
                             ({{ contract.start_date|date:'M j, Y'}} - {{ contract.end_date|date:'M j, Y'}})
                             <br />
                         {% empty %}
-                            This project is not associated with any contracts.
+                            {% trans "This project is not associated with any contracts." %}
                         {% endfor %}
                     </td>
                 </tr>
@@ -78,12 +79,12 @@
                     <li>
                         {{ user.get_name_or_username }}
                         {% if perms.crm.change_projectrelationship %}
-                            {% with caption="Edit "|add:user.get_name_or_username|add:"'s relationship to "|add:object.name %}
+                            {% with caption=_("Edit ")|add:user.get_name_or_username|add:_("'s relationship to ")|add:object.name %}
                                 <a title="{{ caption }}" href="{% url 'edit_relationship' %}?project_id={{ object.id}}&user_id={{ user.id }}&next={{ next_url|add_parameters:request.GET|urlencode }}"><i alt="{{ caption }}" class="icon-pencil"></i></a>
                             {% endwith %}
                         {% endif %}
                         {% if perms.crm.delete_projectrelationship %}
-                            {% with caption="Remove "|add:user.get_name_or_username|add:" from "|add:object.name %}
+                            {% with caption=_("Remove ")|add:user.get_name_or_username|add:_(" from ")|add:object.name %}
                                 <a title="{{ caption }}" href="{% url 'delete_relationship' %}?project_id={{ object.id }}&user_id={{ user.id }}&next={{ next_url|add_parameters:request.GET|urlencode }}"><i alt="{{ caption }}" class="icon-remove"></i></a>
                             {% endwith %}
                         {% endif %}
@@ -94,7 +95,7 @@
                 <form class="form-inline" action="{% url 'create_relationship' %}?project_id={{ object.id }}&next={{ next_url|add_parameters:request.GET|urlencode }}" method="post" accept-charset="utf-8">
                     {% csrf_token %}
                     {{ add_user_form|as_bootstrap:"inline" }}
-                    <input class="btn" type="submit" value="Add" />
+                    <input class="btn" type="submit" value="{% trans "Add" %}" />
                 </form>
             {% endif %}
         </div>

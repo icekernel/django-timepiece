@@ -1,8 +1,9 @@
 {% extends "timepiece/reports/base.html" %}
 {% load timepiece_tags bootstrap_toolkit %}
 {% load url from future %}
+{% load i18n %}
 
-{% block title %}Billable Hours Report{% endblock title %}
+{% block title %}{% trans "Billable Hours Report" %}{% endblock title %}
 
 {% block bodyid %}billable-hours{% endblock bodyid %}
 
@@ -10,7 +11,7 @@
     {{ block.super }}
     <li>
         <span class="divider">/</span>
-        <a href="{% url 'report_billable_hours' %}">Billable Hours Report</a>
+        <a href="{% url 'report_billable_hours' %}">{% trans "Billable Hours Report" %}</a>
     </li>
 {% endblock crumbs %}
 
@@ -40,7 +41,7 @@
                 {% if entries %}
                     <div id="chart"></div>
                 {% else %}
-                    <p>There are no entries which match your query.</p>
+                    <p>{% trans "There are no entries which match your query." %}</p>
                 {% endif %}
             </div>
         </div>
@@ -64,7 +65,7 @@
                             <div class="controls{% if field.errors %} error{% endif %}">{{ field }}</div>
                         {% endif %}
                     {% endfor %}
-                    <button type="submit" class="btn btn-primary">Apply Filters</button>
+                    <button type="submit" class="btn btn-primary">{% trans "Apply Filters" %}</button>
                 </div>
 
                 {% for field in filter_form %}
@@ -73,8 +74,8 @@
                             <label class="control-label">
                                 {{ field.label }}
                                 <span>
-                                    <a href="#" class="select-all">select all</a> |
-                                    <a href="#" class="select-none">select none</a>
+                                    <a href="#" class="select-all">{% trans "select all" %}</a> |
+                                    <a href="#" class="select-none">{% trans "select none" %}</a>
                                 </span>
                             </label>
                             {% if field.errors %}
